@@ -1,1 +1,3 @@
-# How to do bufferoverflow for a Linux binary in GBD ? 
+## How to do bufferoverflow for a Linux binary in GBD ? 
+
+1. Identify the overflow by giving some malicious input; should see something like "SEGMENTATION FAULT" etc. 
