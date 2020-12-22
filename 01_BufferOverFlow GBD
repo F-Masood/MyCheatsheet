@@ -1,3 +1,10 @@
-## How to do bufferoverflow for a Linux binary in GBD ? 
+## How to do bufferoverflow for a Linux binary in GDB () ?
+### Tested for Trollv2 Vulnhub - Dated 22 
 
-1. Identify the overflow by giving some malicious input; should see something like "SEGMENTATION FAULT" etc. 
+
+1. Identify the overflow by giving some malicious input to binary; should see something like "SEGMENTATION FAULT" etc. 
+2. Python can help in generating * no of characters e.g. python -c 'print("A"*500)' can generate 500 A's.
+3. Open the binary name in GDB by running command: gdb <binary>
+4. Next inside the GBD type command: r $(python -c 'print"A"*300') 
+5. Above command should crash the program, and GBD will show "Program received signal SIGSEGV, Segmentation fault." 
+6. Create a unique pattern with MSF by using command: msf-pattern_create -l 300
