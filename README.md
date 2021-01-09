@@ -7,9 +7,9 @@ Notes related to Vuln Assmnt/PenTesting
 > 2. Run gobuster/wfuzz and identify DIR and FILES present. Try using 02 diff wordlists. BurpSuite also has crawler. 
 > 3. Run nikto, Have you read the source code ? If its a website look whats running ? 
 > 4. Wordpress, Joomla, October, Phpmyadmin, Mantis, Adminer etc.
-  1. running tools e.g wpscan or joomscan can help further enumeration.
-  2. Try running Hydra with HTTP module for brute forcing.
-  3. Cewl can be used to generate a custom wordlist if "/usr/share/wordlists/rockyou.txt" fails. 
+  > 1. running tools e.g wpscan or joomscan can help further enumeration.
+  > 2. Try running Hydra with HTTP module for brute forcing.
+  > 3. Cewl can be used to generate a custom wordlist if "/usr/share/wordlists/rockyou.txt" fails. 
  
 
 #### Portforwarding local service 8080
