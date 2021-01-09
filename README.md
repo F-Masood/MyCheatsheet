@@ -1,5 +1,7 @@
-# My Notes
+# My Notes / Cheatsheet
+*Last Updated: 24 Dec 2020*
 Notes related to Vuln Assmnt/PenTesting 
+
 
 
 *Portforwarding local service 8080*
