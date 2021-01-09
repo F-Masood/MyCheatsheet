@@ -19,12 +19,13 @@ Notes related to Vuln Assmnt/PenTesting
 
 #### PrivESC Methodology for Linux
 > 1. Creds file or any misconfiguration file? (**find** command)
-> 1. sudo commands this user can run ?
+> 1. SUDO commands this user can run ?
 > 1. SUID binaries present (use **find** command or **suid3num python** script)
 > 1. Is there SQL database, try enumerating it ?
 > 1. Running ports / services on this box ? (use **netstat** or **ss** command)
 > 1. Pspy ?
 > 1. Kernel or other exploits e.g. exploits for SUDO ?
+> 1. **Linpeas** or **LinEnum** or **Linux Exploit Suggester**
 
 
 #### Portforwarding local service 8080
