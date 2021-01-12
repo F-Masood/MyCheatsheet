@@ -1,5 +1,5 @@
 # My Notes / Cheatsheet
-### Last Updated: 09 Jan 2020
+### Last Updated: 12 Jan 2020
 Notes related to Vuln Assmnt/PenTesting 
 
 #### Approach for Linux
@@ -41,4 +41,4 @@ Notes related to Vuln Assmnt/PenTesting
 > ss -tupln output --> 127.0.0.1:5901 (locally) && 0.0.0.0:65000 (global) && :80(global).\
 > From Kali Box run: ssh -L 5901:localhost:5901 one@192.168.10.11 -p 65000.\
 > Now you can acess that port 5901 locally i.e. (from Kali Box: http://127.0.0.1:5901).\
-> **VNC open session** vncviewer -passwd remote_level 127.0.0.1:5901.\
+> **VNC open session** vncviewer -passwd remote_level 127.0.0.1:5901
