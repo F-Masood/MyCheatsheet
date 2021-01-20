@@ -65,3 +65,6 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 > 1. The above command will create a ftp.txt file which will have commands to download the file.
 > 1. Finally run: ftp -v -n -s:ftp.txt
 > 1. and file will be downloaded. 
+
+#### PrivESC Methodology for Windows
+> 1. Look for exploits on -> https://github.com/SecWiki/windows-kernel-exploits
