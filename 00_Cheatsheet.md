@@ -6,6 +6,7 @@ Notes related to Vuln Assmnt/PenTesting
 > 1. Identify open ports (**nmap/autorecon/rustscan**), enumerate ports (TCP+UDP) for services.
 > 1. Run **gobuster/wfuzz** and identify DIR and FILES present. Try using 02 diff wordlists. BurpSuite also has crawler. 
 > 1. Run **nikto**, Have you read the source code ? If its a website look whats running ? 
+> 1. Authentication can be bypassed by ###SQLi Auth Bypass or maybe try ###Password Spray or ###BruteForce
 > 1. Wordpress, Joomla, October, Phpmyadmin, Mantis, Adminer etc.
 > 1. Running tools e.g **wpscan** or **joomscan** can help further enumeration.
 > 1. Try running **Hydra** with HTTP module for brute forcing.
