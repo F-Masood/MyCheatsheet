@@ -34,7 +34,7 @@ Notes related to Vuln Assmnt/PenTesting
 #### Portforwarding via BurpSuite
 > 1.  Under "Proxy Listeners" add new listener on random port [e.g TCP9000] and select option "All Interfaces". In "Request Handling" tab give the IP and Port [e.g IP2:80] of server you want to access. Now if you open http://IP1:9000 it will redirect to http://IP2:80
 
-#### FTP download a directory - As can't download with traational FTP
+#### FTP download a directory 
 > 1. ftp://192.168.75.65/Logs
 > 1. wget -r -nH --cut-dirs=5 -nc ftp://anonymous:nopassneeded@192.168.75.65//absolute/path/to/directory
 > 1. wget -r -nH --cut-dirs=5 -nc ftp://anonymous:nopassneeded@192.168.75.65//Logs
