@@ -96,8 +96,8 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 > 1. export TERM=xterm-256color
 > 1. stty rows <num> columns <cols>; e.g stty rows 29 columns 103
 
-# In Attacker console
-stty size (to find ROWS and COLUMNS value)
+> 1. **In Attacker console**
+> 1. stty size (to find ROWS and COLUMNS value)
 
 #### Windws Tricks
 ##### Download a file in Windows via certutil
