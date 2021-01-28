@@ -127,6 +127,9 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 
 
 #### PrivESC Methodology for Windows
+> 1. Run commands such as -> whoami --- whoami /priv [to see the priveleges]
+> 1. Run winpeas with fast, searchfast or cmd options.
+> 1. Run multiple scripts e.g windows-exploit-suggester or sharup or juciy potato etc. 
 > 1. Look for exploits on -> https://github.com/SecWiki/windows-kernel-exploits
 > 1. find OS details - systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
 > 1. total users present - net users
