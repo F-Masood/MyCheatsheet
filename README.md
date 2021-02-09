@@ -43,6 +43,7 @@ Notes related to Vuln Assmnt/PenTesting
 > 1. gcc rootshell.c -o vulnlib.so -shared -Wall -fPIC -w
 > 1. gcc rootshell.c -o custom_function_name.so -shared -Wall -fPIC -w
 > 1. place the .so file in a writeable directory from .conf file of ld.so.conf.d/
+> 1. if you get some error like [gcc: error trying to exec 'cc1': execvp: No such file or directory], trying setting the $PATH variable 
 > 1. try running that binary, should get **root** shell
 ```c
 #include <stdio.h>
