@@ -31,6 +31,7 @@ Notes related to Vuln Assmnt/PenTesting
 > 1. Pspy ?
 > 1. Kernel or other exploits e.g. exploits for SUDO ?
 > 1. **Linpeas** or **LinEnum** or **Linux Exploit Suggester**
+> 1. **LD PreLoad Stuff** --> https://atom.hackstreetboys.ph/linux-privilege-escalation-environment-variables/
 
 #### PrivESC Methodology for Linux - /etc/passwd && /etc/shadow
 > 1. Check who owns -> ls -lart /etc/passwd && who owns ls -lart /etc/shadow. 
