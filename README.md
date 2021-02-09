@@ -63,6 +63,9 @@ Notes related to Vuln Assmnt/PenTesting
 > using **socat** for local port forwarding. In this example port 8080 is running locally and we will forward and make it public to 8089.\
 > socat TCP-LISTEN:8089,fork TCP:127.0.0.1:8080
 
+#### wpscan commands
+> 1.  wpscan -e ap --rua --disable-tls-checks --detection-mode aggressive --plugins-detection aggressive --url https://xxx.xxx
+
 #### Portforwarding local service 5901 (VNC) - HackMyVM Box Level
 > 1. using SSH (Kali IP: 192.168.10.100, Level IP: 192.168.10.11).\
 > 1. there is a service running on port 5901 locally.\
