@@ -64,6 +64,11 @@ void fowzmalbec()
 setuid(0); setgid(0); system("/bin/bash");
 }
 ```
+#### PrivESC Methodology for Linux - writeable PATH
+> 1. Usually normal $PATH is -> /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+> 1. If any of the above is writeable, add your custom script.
+> 1. Check for a cronjob e.g **run-parts** on Ubuntu is present in **/bin** and if **/usr/local/bin** is writeable, we can make our own malicious **REV shell** or **BASH SUID** script in **/usr/local/bin** as **run-parts** and this will do the work. 
+
 #### PrivESC Methodology for Linux - setting SUID bit on /bin/bash
 > 1. Make a bash script file with following contents and make file executable. 
 ```bash
