@@ -215,3 +215,7 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 
 ##### Access Windows box via xfreerdp
 > 1. xfreerdp /u:superadmin /p:Superadmin123$ /v:192.168.203.53:3389
+
+
+#### Scripts & Utilities
+> 1. Extract IP addresses out a file - sed '/\n/!s/[0-9.]\+/\n&\n/;/^\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}\n/P;D' {file name}
