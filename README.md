@@ -1,5 +1,5 @@
 # My Notes / Cheatsheet
-### Last Updated: 10 Feb 2020
+### Last Updated: 12 Mar 2021
 Notes related to Vuln Assmnt/PenTesting 
 
 #### Approach for Compromising a box
@@ -219,3 +219,7 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 
 #### Scripts & Utilities
 > 1. Extract IP addresses out a file - sed '/\n/!s/[0-9.]\+/\n&\n/;/^\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}\n/P;D' {file name}
+
+#### Hashcat Generate Custom Wordlist
+> 1. hashcat --force words -r /usr/share/hashcat/rules/append_specialchars.rule -r /usr/share/hashcat/rules/best64.rule --stdout > hashcardDict.txt
+> 2. /usr/share/hashcat/rules/append_specialchars.rule ---> has special characters specified e.g. ! @ # *
