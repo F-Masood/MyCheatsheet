@@ -225,5 +225,5 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 > 2. /usr/share/hashcat/rules/append_specialchars.rule ---> has special characters specified e.g. ! @ # *
 
 #### Linux tips
-> 1. convert next line to white space `bash tr '\r\n' ' '
-`
+> 1. convert next line to white space `cat file.txt | tr '\r\n' ' '`
+> 2. delte white spaces from a file `cat file.txt | tr -d ' '`
