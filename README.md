@@ -222,8 +222,12 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 
 #### Hashcat Generate Custom Wordlist
 > 1. hashcat --force words -r /usr/share/hashcat/rules/append_specialchars.rule -r /usr/share/hashcat/rules/best64.rule --stdout > hashcardDict.txt
-> 2. /usr/share/hashcat/rules/append_specialchars.rule ---> has special characters specified e.g. ! @ # *
+> 1. /usr/share/hashcat/rules/append_specialchars.rule ---> has special characters specified e.g. ! @ # *
 
 #### Linux tips
 > 1. convert next line to white space `cat file.txt | tr '\r\n' ' '`
-> 2. delte white spaces from a file `cat file.txt | tr -d ' '`
+> 1. delte white spaces from a file `cat file.txt | tr -d ' '`
+
+#### Joomla Reverse Shell
+> 1. Go to extensions ---> templates ---> protostar, create new file, rev with extension .php, upload REVERSE SHELL php, acces it via http://<IP>/joomla/rev.php 
+> 1. https://vk9-sec.com/reverse-shell-on-any-cms/
