@@ -219,11 +219,11 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
   
 ##### Ubuntu WSL2 on Windows 10 - SSH portforwarding to access it via Public IP
 > 1. changed following in the sudo /etc/ssh/sshd_config
-  '''bash
+  ```bash
   Port 2222
   AddressFamily any
   ListenAddress 0.0.0.0
-  '''
+  ```
 > 1. restart ssh service
 > 1. netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=2222 connectaddress=<Windows or WSL IP here> connectport=2222 [ portfwd]
 > 1. netsh advfirewall firewall add rule name=”Open Port 2222 for WSL2” dir=in action=allow protocol=TCP localport=2222 [ firewall]
