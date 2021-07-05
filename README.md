@@ -245,6 +245,7 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 > 1. convert next line to white space `cat file.txt | tr '\r\n' ' '`
 > 1. delete white spaces from a file `cat file.txt | tr -d ' '`
 > 1. print only 1st field before ":" `cut -d ":" -f1  myfile.txt.2 > usernames`
+> 1. covert all from Uppercase to Lowercase ```echo "$a" | tr '[:upper:]' '[:lower:]'```
   
 #### Cracking passwords from .pcap file
 > 1. ```aircrack-ng -w /usr/share/wordlists/rockyou.txt WPA-01.cap1```
