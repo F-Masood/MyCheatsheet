@@ -258,7 +258,7 @@ es-shortlist.txt```
 trator```
 > 3. Using crackmap exec to bruteforce a user password ```crackmapexec smb 192.168.10.39 -u administrator -d controller.local -p /usr/share/wordlists/rockyou.txt```
 
-###Create multiple FTP users, they do not have SSH shell and add them in same group (ftp2100). Allow this group ftp2100 to edit/upload/write to /var/www/ path
+### Create multiple FTP users, they do not have SSH shell and add them in same group (ftp2100). Allow this group ftp2100 to edit/upload/write to /var/www/ path
 > 1. ``` sudo echo "/bin/false" >> /etc/shells ```
 > 1. ``` sudo addgroup ftp2100 ```
 > 1. ``` sudo adduser skinnyFTP --shell /bin/false --home /var/www --ingroup ftp2100 ```
