@@ -207,7 +207,14 @@ Host 192.168.74.125
         IdentityFile /var/tmp/075_Hunit/004_git_keys/keys/id_rsa
 ```
 > 1. Next clone the repo if SSH is running on 43022 ```bash git clone ssh://git@192.168.74.125:43022/git-server```
-> 1. 	
+> 1. To clone local repo local to remote git repo do following:
+```bash
+git config --global user.email "skinny@noemail.com"
+git config --global user.name "skinny"
+git add .
+git commit
+git push origin master
+```
 
 	
 #### XXE injection
