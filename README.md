@@ -200,6 +200,16 @@ chmod +s /bin/bash
 > 1. ```bash copy cmd_exec FROM program 'pwd';```
 > 1. ```bash SELECT * FROM cmd_exec; ```
 
+#### git nonsense
+> 1. For cloning over SSH, first create a config file under ~/.ssh directory
+```bash
+Host 192.168.74.125
+        IdentityFile /var/tmp/075_Hunit/004_git_keys/keys/id_rsa
+```
+> 1. Next clone the repo if SSH is running on 43022 ```bash git clone ssh://git@192.168.74.125:43022/git-server```
+> 1. 	
+
+	
 #### XXE injection
 ```bash
 <?xml  version="1.0" encoding="ISO-8859-1"?>
