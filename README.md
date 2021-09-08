@@ -1,5 +1,5 @@
 # My Notes / Cheatsheet
-### Last Updated: 05 Sep 2021
+### Last Updated: 09 Sep 2021
 Notes related to Vuln Assmnt/PenTesting 
 
 #### Approach for Compromising a box
@@ -21,6 +21,9 @@ Notes related to Vuln Assmnt/PenTesting
 > 1. LFI - **.php?file=/etc/passwd** - Try fuzzing it with WFUZZ. Reading **LOG** files to acheive RCE or Reading **SSH** key files.
 > 1. PHP assert ftn to bypass - e.g. http://192.168.10.30/index.php?page=' and die(system("ls")) or '	
 > 1. Command Injection - Try Special characters e.g. " ; , | , & , && " etc. ${IFS} is space --- Can help in achieving ComInj. 
+
+#### masscan tcp
+```bash masscan -p1-65535 --rate=1000 192.168.78.147 -e tun0 | tee 004_mass.scan.log```
 
 #### PrivESC Methodology for Linux
 > 1. Creds file or any misconfiguration file? (**find or grep** command)
