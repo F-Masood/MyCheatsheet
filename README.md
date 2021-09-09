@@ -9,7 +9,7 @@ Notes related to Vuln Assmnt/PenTesting
 > 1. To enumerate the version of web app, can try http://website:port/readme.md or http://website:port/CHANGELOG http://website:port/README etc ? 
 > 1. Run **nikto**, Have you read the source code ? If its a website look whats running ?
 > 1. Try NC or CURL the service and see the output ? Anything unsual or weird in header?
-> 1. Authentication can be bypassed by **SQLi Auth Bypass** or maybe try **Password Spray** or **BruteForce**.
+> 1. Authentication can be bypassed by **SQLi Auth Bypass** or maybe try **Password Spray** or **BruteForce** or **Default Credentials**.
 > 1. Maybe running **CEWL** for a good wordlist generation ?. 
 > 1. Wordpress, Joomla, October, Phpmyadmin, Mantis, Adminer etc.
 > 1. Running tools e.g **wpscan** or **joomscan** can help further enumeration.
