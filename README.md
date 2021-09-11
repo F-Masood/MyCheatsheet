@@ -219,10 +219,10 @@ git push origin master
 > 1. Flow: DB -> Table -> Column Name - Data
 > 1. Find injection point.
 > 1. Finding the exact number of columns before running UNION command.
-	```bash 
+> 1. ```bash 
 	search=mary'+union+select+1--+%3b
 	```
-	```bash 
+> 1. ```bash 
 	id=1' union select 1,2,3,4,5-- -;
 	```
 > 1. DO @@verision or version() or sleep(5) for testing purposes.
