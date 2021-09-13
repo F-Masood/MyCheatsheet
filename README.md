@@ -295,6 +295,13 @@ xmlns:urn=\"urn:muddy\"><soapenv:Header/>
 > 1. hashcat --force words -r /usr/share/hashcat/rules/append_specialchars.rule -r /usr/share/hashcat/rules/best64.rule --stdout > hashcardDict.txt
 > 1. /usr/share/hashcat/rules/append_specialchars.rule ---> has special characters specified e.g. ! @ # *
 
+#### Adding new exploit to msf
+> 1. Download the exploit (msf ruby file)
+> 1. ```bash cp HP_Jetdirect_Path_Traversal_Arbitrary_Code_Execution.rb /usr/share/metasploit-framework/modules/exploits/multi/local/```
+> 1. updatedb
+> 1. run msfconsole
+> 1. exploit should come in 
+	
 #### Linux tips
 > 1. convert next line to white space `cat file.txt | tr '\r\n' ' '`
 > 1. delete white spaces from a file `cat file.txt | tr -d ' '`
