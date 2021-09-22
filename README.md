@@ -406,6 +406,7 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 > 1. total users present - ```net users```
 > 1. specific user details - ```net user <username>```
 > 1. FW status - ```netsh firewall show state```
+> 1. PrivESC Script https://github.com/itm4n/PrivescCheck
 	
 ##### PrivESC Methodology for Windows - Kernel Exploits with wesng (Preferable Windows < Windows 10)
 > 1. URL: https://github.com/bitsadmin/wesng
