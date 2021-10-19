@@ -272,6 +272,9 @@ Connection: close
 }	
 ```
 	
+#### FTP download
+> 1. ncftpget -R -T -v -P <FTP Port> -u 'anonymous' -p '12345' 192.168.248.127 /var/tmp/001_PGP/medjed/ app
+> 1. wget -r ftp://anonymous@192.168.237.127:30021
 
 #### XXE injection
 ```bash
