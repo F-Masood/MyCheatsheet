@@ -125,7 +125,10 @@ chmod +s /bin/bash
 > 1. wget -r -nH --cut-dirs=5 -nc ftp://anonymous:nopassneeded@192.168.75.65//absolute/path/to/directory
 > 1. wget -r -nH --cut-dirs=5 -nc ftp://anonymous:nopassneeded@192.168.75.65//Logs
 > 1. ncftp -u [user] -p [pass] [server]
-
+	
+#### smbget download a directory recursively
+> 1. smbget -Rv smb://10.11.1.31/wwwroot
+	
 #### Exploiting Redis service --- Usually running on 6379
 > 1. "Redis Load Module" technique, for this you need to upload a file to SERVER, so something like FTP or SSH with WRITE access
 > 1. Download this repo -> https://github.com/n0b0dyCN/RedisModules-ExecuteCommand
