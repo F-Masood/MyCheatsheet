@@ -473,6 +473,7 @@ or
 > 1. specific user details - ```net user <username>```
 > 1. FW status - ```netsh firewall show state```
 > 1. PrivESC Script https://github.com/itm4n/PrivescCheck
+> 1. PrintSpoofer -> https://github.com/itm4n/PrintSpoofer
 	
 ##### PrivESC Methodology for Windows - Kernel Exploits with wesng (Preferable Windows < Windows 10)
 > 1. URL: https://github.com/bitsadmin/wesng
