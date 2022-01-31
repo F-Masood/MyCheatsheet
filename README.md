@@ -500,6 +500,9 @@ or
 > 1. net user /add [username] [password] ---> ```net user /add superadmin Superadmin123$```
 > 1. net localgroup administrators [username] /add ---> ```net localgroup administrators /add superadmin```
 
+##### Windows add domain user after impersonating token
+> 1. ``` net user pentester Pa$$WOrd@!123 /add /domain``` 
+> 1. ``` net group "domain Admins" pentester /add /domain``` 
 
 ##### Windows Firewall from CMD
 > 1. FW on --- ```netsh advfirewall set currentprofile state on```
