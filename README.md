@@ -192,7 +192,7 @@ F
 > 1. to see if the new network is accessible, run **ping sweep* by typing command --->  ``` use -> multi/gather/ping_sweep ```. use new network and meterpreter session number.
 > 1. to set up socks4a server ---> ```use auxiliary/server/socks4a```
 > 1. edit proxychains.conf, add ***sock4a*** proxy with 127.0.0.1 and port 1080.
-> 1. next run proxychains with sudo before nmap. remember proxychains can only get TCP/UDP no ICMP, so use nmap something like ```sudo proxychains nmap -sT -sC -sV -r -v -Pn (IP) ```
+> 1. next run proxychains with sudo before nmap. remember proxychains can only get TCP/UDP no ICMP, so use nmap something like ```sudo proxychains nmap -sT -sC -sV -r -v --min-rate=1500 -Pn (IP) ```
 	
 > 1. **In Attacker console**
 > 1. ``` stty size ``` (to find ROWS and COLUMNS value)
